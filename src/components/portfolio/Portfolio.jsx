@@ -10,6 +10,8 @@ import IMG6 from '../../assets/portafolio6.png'
 import IMG7 from '../../assets/portafolio7.jpg'
 import IMG8 from '../../assets/portafolio8.jpeg'
 import IMG9 from '../../assets/portafolio9.jpeg'
+import IMG10 from '../../assets/portafolio10.jpg'
+import IMG11 from '../../assets/portafolio11.jpg'
 const Portfolio = () => {
 
   const funcion1 = () =>{
@@ -120,11 +122,21 @@ const Portfolio = () => {
         </article>
         <article className='portfolio__item'>
           <div className='portfolio__item-image'>
-            <img src={IMG9} alt="" />
+            <img src={IMG10} alt="" />
           </div>
           <h3>Empresa Tecnologica 2</h3>
           <div className="portfolio__item-cta">
           <a href="https://www.google.com/" className='btn btn-primary'>Ir</a>
+          </div>
+        </article>
+
+        <article className='portfolio__item'>
+          <div className='portfolio__item-image'>
+            <img src={IMG11} alt="" />
+          </div>
+          <h3>Empresa Tecnologica 3</h3>
+          <div className="portfolio__item-cta">
+          <a href="https://coderesolutions.com/" className='btn btn-primary'>Ir</a>
           </div>
         </article>
        
