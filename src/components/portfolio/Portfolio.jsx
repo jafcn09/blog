@@ -95,38 +95,9 @@ const Portfolio = () => {
           <div className='portfolio__item-image'>
             <img src={IMG7} alt="" />
           </div>
-          <h3>Supermercado</h3>
+          <h3>Empre De Energia Eolica </h3>
           <div className="portfolio__item-cta">
-          <a href="https://www.plazavea.com.pe/" className='btn btn-primary'>Ir</a>
-          </div>
-        </article>
-
-        <article className='portfolio__item'>
-          <div className='portfolio__item-image'>
-            <img src={IMG8} alt="" />
-          </div>
-          <h3>Ropa De Modas</h3>
-          <div className="portfolio__item-cta">
-          <a href="https://pe.hm.com/" className='btn btn-primary'>Ir</a>
-          </div>
-        </article>
-
-        <article className='portfolio__item'>
-          <div className='portfolio__item-image'>
-            <img src={IMG9} alt="" />
-          </div>
-          <h3>Empresa Tecnologica</h3>
-          <div className="portfolio__item-cta">
-          <a href="https://vtex.com/" className='btn btn-primary'>Ir</a>
-          </div>
-        </article>
-        <article className='portfolio__item'>
-          <div className='portfolio__item-image'>
-            <img src={IMG10} alt="" />
-          </div>
-          <h3>Empresa Tecnologica 2</h3>
-          <div className="portfolio__item-cta">
-          <a href="https://www.google.com/" className='btn btn-primary'>Ir</a>
+          <a href="https://servizisolarisrls.com/" className='btn btn-primary'>Ir</a>
           </div>
         </article>
 
@@ -134,9 +105,9 @@ const Portfolio = () => {
           <div className='portfolio__item-image'>
             <img src={IMG11} alt="" />
           </div>
-          <h3>Empresa Tecnologica 3</h3>
+          <h3>Empresa Tecnologica </h3>
           <div className="portfolio__item-cta">
-          <a href="https://coderesolutions.pe/" className='btn btn-primary'>Ir</a>
+          <a href="https://coderesolution.pe/" className='btn btn-primary'>Ir</a>
           </div>
         </article>
        
