@@ -136,7 +136,7 @@ const Portfolio = () => {
           </div>
           <h3>Empresa Tecnologica 3</h3>
           <div className="portfolio__item-cta">
-          <a href="https://coderesolutions.com/" className='btn btn-primary'>Ir</a>
+          <a href="https://coderesolutions.pe/" className='btn btn-primary'>Ir</a>
           </div>
         </article>
        

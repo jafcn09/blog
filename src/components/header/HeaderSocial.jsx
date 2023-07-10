@@ -13,7 +13,7 @@ const HeaderSocial = () => {
         <a href="https://github.com/jafcn09" target="_blank"><BsGithub/></a>
 
         <a href="https://www.facebook.com/profile.php?id=100016960991531" target="_blank"><BsFacebook/></a>
-        <a href="https://coderesolutions.com" target="_blank"><BiCode/></a>
+        <a href="https://coderesolutions.pe" target="_blank"><BiCode/></a>
     </div>
   )
 }
