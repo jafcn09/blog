@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "header": {
+    "greeting": "Hi, I'm",
+    "title": "Full Stack Developer",
+    "description": "I transform ideas into innovative digital solutions",
+    "cta_download": "Download CV",
+    "cta_contact": "Contact Me"
+  },
+  "about": {
+    "title": "About Me",
+    "bio": "I am a passionate developer with more than 3 years of experience creating modern web applications. I specialize in frontend and backend technologies, always seeking to learn and grow professionally.",
+    "expertise": "Experience",
+    "expertise_desc": "3+ years developing solutions",
+    "projects": "Projects",
+    "projects_desc": "10+ successful projects completed",
+    "certifications": "Certifications",
+    "certifications_desc": "20+ international certifications"
+  },
+  "experience": {
+    "title": "Technical Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Databases",
+    "tools": "Tools"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "view_project": "View Project",
+    "projects": [
+      {
+        "title": "Animal Shelter",
+        "description": "Management platform for animal refuge"
+      },
+      {
+        "title": "Education Startup",
+        "description": "Educational platform with course management"
+      },
+      {
+        "title": "Gym",
+        "description": "Management system for fitness center"
+      },
+      {
+        "title": "Health Center",
+        "description": "Medical platform for appointments and patients"
+      },
+      {
+        "title": "Government Entity",
+        "description": "Administrative procedures system"
+      },
+      {
+        "title": "Wind Energy Company",
+        "description": "Energy monitoring dashboard"
+      },
+      {
+        "title": "Technology Company",
+        "description": "Technology services portal"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Do you have any project in mind? Let's talk!",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message",
+      "required": "This field is required",
+      "invalid_email": "Invalid email"
+    },
+    "direct_contact": "Or contact me directly",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "copyright": "© 2025 Jhafet Cánepa. All rights reserved."
+  }
+}

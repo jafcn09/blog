@@ -1,16 +1,16 @@
 import React from 'react'
 import './about.css'
 import ME from '../../assets/work1.jpg'
-import {FaAward} from 'react-icons/fa'
-import {GiBrain} from 'react-icons/gi'
-import {VscFolderLibrary} from 'react-icons/vsc'
+import { FaAward } from 'react-icons/fa'
+import { GiBrain } from 'react-icons/gi'
+import { VscFolderLibrary } from 'react-icons/vsc'
+import { useTranslation } from 'react-i18next'
 
 const About = () => {
+  const { t } = useTranslation()
+
   return (
-    <section id='about'>
-      <h5>Un Poco</h5>
-      
-      <h2>Sobre Mi</h2>
+    <section id='about' className='about'>
       <div className='container about__container'>
         <div className='about__me'>
           <div className='about__me-image'>
@@ -19,34 +19,37 @@ const About = () => {
         </div>
 
         <div className='about__content'>
-          <div className='about__cards'>
-           <article className='about__card'>
-             <GiBrain className='about__icon'/>
-             <h5>Habilidades</h5>
-             <small>3 años programando</small>
-           </article>
-           <article className='about__card'>
-             <FaAward className='about__icon'/>
-             <h5>Certificaciones</h5>
-             <small>20 certificaciones internacionales recibidas</small>
-           </article>
-           <article className='about__card'>
-             <VscFolderLibrary className='about__icon'/>
-             <h5>Proyectos</h5>
-             <small>+10 proyectos realizados</small>
-           </article>
-          </div>
-          <br/>
-          <h3>Mi biografía</h3>
-          <p>
-          Desarrollador de software con grandes cualides en el mundo de diseño y también creador de aplicaciones responsivas, trabajando con muchas herramientas Tecnológicos para la industrias del desarrollo.
-          </p>
-          <h3>Perfil Profesional</h3>
-          <p>
-         Trabajar de forma satisfactoria para las empresas de tecnologia.
-          </p>
+          <h2>{t('about.title')}</h2>
 
-          <a href="#contact" className='btn btn-primary'>Contactar</a>
+          <div className='about__cards'>
+            <article className='about__card'>
+              <div className='about__card-icon'>
+                <GiBrain />
+              </div>
+              <h5>{t('about.expertise')}</h5>
+              <small>{t('about.expertise_desc')}</small>
+            </article>
+            <article className='about__card'>
+              <div className='about__card-icon'>
+                <FaAward />
+              </div>
+              <h5>{t('about.certifications')}</h5>
+              <small>{t('about.certifications_desc')}</small>
+            </article>
+            <article className='about__card'>
+              <div className='about__card-icon'>
+                <VscFolderLibrary />
+              </div>
+              <h5>{t('about.projects')}</h5>
+              <small>{t('about.projects_desc')}</small>
+            </article>
+          </div>
+
+          <div className='about__bio'>
+            <p>{t('about.bio')}</p>
+          </div>
+
+          <a href="#contact" className='btn btn-primary'>{t('header.cta_contact')}</a>
         </div>
       </div>
     </section>

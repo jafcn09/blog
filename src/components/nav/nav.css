@@ -1,33 +1,198 @@
-nav{
-    background: rgba(0, 0, 0, 0.3);
-    width: max-content;
-    display: block;
-    padding: 0.7rem 1.7rem;
-    z-index: 2;
+/* ============= NAV ============= */
+.nav {
     position: fixed;
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 2rem;
+    z-index: 100;
     display: flex;
-    gap: 0.8rem;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem 1.5rem;
+    background: rgba(15, 20, 25, 0.85);
     border-radius: 3rem;
-    backdrop-filter: blur(15px);
+    border: 1px solid var(--color-primary-variant);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.6s ease-out 0.3s both;
 }
 
-nav a{
-    background: transparent;
-    padding: 0.9rem;
-    border-radius: 50%;
+/* ============= NAV LINKS ============= */
+.nav__links {
     display: flex;
-    color: var(--color-light);
-    font-size: 1.1rem;
+    gap: 0.5rem;
+    align-items: center;
 }
 
-nav a:hover {
-    background: rgba(0, 0, 0, 0.3);
+.nav__link {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    border: 2px solid transparent;
 }
 
-nav a.active {
+.nav__link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, var(--color-primary-variant), transparent);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.nav__link:hover {
+    color: var(--color-primary);
+}
+
+.nav__link:hover::before {
+    opacity: 1;
+}
+
+.nav__link.active {
     background: var(--color-primary);
-    color: var(--color-bg);
+    color: var(--color-white);
+    box-shadow: 0 0 20px rgba(139, 115, 85, 0.4);
+}
+
+.nav__link.active::before {
+    opacity: 0;
+}
+
+/* ============= NAV CONTROLS ============= */
+.nav__controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding-left: 1rem;
+    border-left: 1px solid var(--color-primary-variant);
+}
+
+.nav__control-btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-secondary);
+    background: transparent;
+    color: var(--color-secondary);
+    font-size: 1.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav__control-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.nav__control-btn:hover::before {
+    transform: scale(1);
+}
+
+.nav__control-btn:hover {
+    color: var(--color-white);
+    border-color: var(--color-secondary);
+}
+
+.nav__theme-btn {
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+.nav__theme-btn::before {
+    background: var(--color-secondary);
+}
+
+.nav__lang-btn {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+/* ============= MEDIA QUERIES (TABLETS) ============= */
+@media screen and (max-width: 1024px) {
+    .nav {
+        padding: 0.8rem 1.2rem;
+        gap: 1.5rem;
+    }
+
+    .nav__link,
+    .nav__control-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .nav__lang-btn {
+        font-size: 0.8rem;
+    }
+}
+
+/* ============= MEDIA QUERIES (SMALL DEVICES) ============= */
+@media screen and (max-width: 600px) {
+    .nav {
+        bottom: 1.5rem;
+        padding: 0.6rem 0.8rem;
+        gap: 0.8rem;
+        border-radius: 2.5rem;
+    }
+
+    .nav__links {
+        gap: 0.3rem;
+    }
+
+    .nav__link {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+
+    .nav__control-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .nav__lang-btn {
+        font-size: 0.7rem;
+        padding: 0;
+    }
+
+    .nav__controls {
+        padding-left: 0.8rem;
+        gap: 0.3rem;
+    }
+}
+
+/* ============= ANIMATIONS ============= */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
 }

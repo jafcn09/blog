@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "portfolio": "Portafolio",
+    "contact": "Contacto"
+  },
+  "header": {
+    "greeting": "Hola, soy",
+    "title": "Desarrollador Full Stack",
+    "description": "Transformo ideas en soluciones digitales innovadoras",
+    "cta_download": "Descargar CV",
+    "cta_contact": "Contáctame"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "bio": "Soy un desarrollador apasionado con más de 3 años de experiencia creando aplicaciones web modernas. Me especializo en tecnologías frontend y backend, siempre buscando aprender y crecer profesionalmente.",
+    "expertise": "Experiencia",
+    "expertise_desc": "Más de 3 años desarrollando soluciones",
+    "projects": "Proyectos",
+    "projects_desc": "10+ proyectos completados exitosamente",
+    "certifications": "Certificaciones",
+    "certifications_desc": "20+ certificaciones internacionales"
+  },
+  "experience": {
+    "title": "Habilidades Técnicas",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Bases de Datos",
+    "tools": "Herramientas"
+  },
+  "portfolio": {
+    "title": "Portafolio",
+    "view_project": "Ver Proyecto",
+    "projects": [
+      {
+        "title": "Albergue Canina",
+        "description": "Plataforma de gestión para refugio de animales"
+      },
+      {
+        "title": "Startup Educación",
+        "description": "Plataforma educativa con gestión de cursos"
+      },
+      {
+        "title": "Gimnasio",
+        "description": "Sistema de gestión para centro fitness"
+      },
+      {
+        "title": "Centro de Salud",
+        "description": "Plataforma médica de citas y pacientes"
+      },
+      {
+        "title": "Entidad Gubernamental",
+        "description": "Sistema administrativo de trámites"
+      },
+      {
+        "title": "Empresa Eólica",
+        "description": "Dashboard de monitoreo de energía"
+      },
+      {
+        "title": "Empresa Tecnológica",
+        "description": "Portal de servicios tecnológicos"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contacto",
+    "description": "¿Tienes algún proyecto en mente? ¡Hablemos!",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo Electrónico",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "submit": "Enviar Mensaje",
+      "required": "Este campo es requerido",
+      "invalid_email": "Correo inválido"
+    },
+    "direct_contact": "O contáctame directamente",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "copyright": "© 2025 Jhafet Cánepa. Todos los derechos reservados."
+  }
+}
