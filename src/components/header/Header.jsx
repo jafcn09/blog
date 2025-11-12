@@ -3,6 +3,7 @@ import './header.css'
 import CTA from './CTA'
 import ME from '../../assets/me.jpg'
 import HeaderSocial from './HeaderSocial'
+import HeaderControls from './HeaderControls'
 import { useTranslation } from 'react-i18next'
 
 const Header = () => {
@@ -10,6 +11,7 @@ const Header = () => {
 
   return (
     <header id="header">
+      <HeaderControls/>
       <div className="header__bg"></div>
       <div className="container header__container">
         <div className="header__content">

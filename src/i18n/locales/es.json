@@ -10,12 +10,11 @@
     "greeting": "Hola, soy",
     "title": "Desarrollador Full Stack",
     "description": "Transformo ideas en soluciones digitales innovadoras",
-    "cta_download": "Descargar CV",
-    "cta_contact": "Contáctame"
+    "cta_whatsapp": "Obtener Mayor Info"
   },
   "about": {
     "title": "Sobre Mí",
-    "bio": "Soy un desarrollador apasionado con más de 3 años de experiencia creando aplicaciones web modernas. Me especializo en tecnologías frontend y backend, siempre buscando aprender y crecer profesionalmente.",
+    "bio": "Soy un desarrollador full stack especializado en crear aplicaciones web y móviles de alto rendimiento. Mi expertise abarca desarrollo frontend moderno, backends robustos y la creación de algoritmos de IA que se integran perfectamente en tus aplicaciones. Diseño soluciones inteligentes que se despliegan en la nube, escalables y seguras. Transformo ideas complejas en productos digitales impactantes que generan resultados.",
     "expertise": "Experiencia",
     "expertise_desc": "Más de 3 años desarrollando soluciones",
     "projects": "Proyectos",
@@ -36,31 +35,82 @@
     "projects": [
       {
         "title": "Albergue Canina",
-        "description": "Plataforma de gestión para refugio de animales"
+        "description": "Plataforma de gestión para refugio de animales",
+        "fullDescription": "Sistema completo de gestión para refugios de animales con módulos de adopción, historial médico, cuidados y seguimiento de mascotas.",
+                "technologies": ["React", "Node.js", "MongoDB", "Express", "Material-UI"]
+        
       },
       {
         "title": "Startup Educación",
-        "description": "Plataforma educativa con gestión de cursos"
+        "description": "Plataforma educativa con gestión de cursos",
+        "fullDescription": "Plataforma educativa integral que permite crear, gestionar y distribuir contenido educativo con seguimiento de progreso de estudiantes.",
+        "technologies": ["React", "Golang", "PostgreSQL", "Redux", "Stripe API"]
       },
       {
         "title": "Gimnasio",
-        "description": "Sistema de gestión para centro fitness"
+        "description": "Sistema de gestión para centro fitness",
+        "fullDescription": "Sistema de gestión integral para centros de fitness con módulos de membresías, clases, entrenadores y seguimiento de progreso.",
+        "technologies": ["Angular", "NestJs", "MySQL", "Tailwind CSS", "Chart.js"]
       },
       {
         "title": "Centro de Salud",
-        "description": "Plataforma médica de citas y pacientes"
+        "description": "Plataforma médica de citas y pacientes",
+        "fullDescription": "Plataforma médica profesional con gestión de citas, historiales de pacientes, prescripciones y reportes médicos.",
+        "technologies": ["React", "Node.js", "PostgreSQL", "JWT Auth", "Email API"]
       },
       {
         "title": "Entidad Gubernamental",
-        "description": "Sistema administrativo de trámites"
+        "description": "Sistema administrativo de trámites",
+        "fullDescription": "Sistema administrativo para gestión de trámites gubernamentales con validación, notificaciones y reportes automáticos.",
+        "technologies":["Angular", "Java Spring", "PostgreSQL", "Bootstrap", "PDF generation"]
       },
       {
         "title": "Empresa Eólica",
-        "description": "Dashboard de monitoreo de energía"
+        "description": "Dashboard de monitoreo de energía",
+        "fullDescription": "Dashboard en tiempo real para monitoreo de turbinas eólicas con análisis de datos, alertas y reportes de rendimiento.",
+        "technologies": ["React", "WebSocket", "NestJs", "Golang", "PostgreSQL"]
       },
       {
         "title": "Empresa Tecnológica",
-        "description": "Portal de servicios tecnológicos"
+        "description": "Portal de servicios tecnológicos",
+        "fullDescription": "Portal B2B de servicios tecnológicos con integración de APIs, catálogo de productos y sistema de pedidos.",
+        "technologies": ["Next.js", "GraphQL", "Node.js", "PostgreSQL", "Stripe"]
+      },
+      {
+        "title": "Repositorio Académico UNTUMBES",
+        "description": "Repositorio digital de tesis y trabajos académicos",
+        "fullDescription": "Sistema de gestión y consulta de trabajos académicos, tesis y documentos de investigación de la Universidad Nacional de Tumbes con búsqueda avanzada.",
+        "technologies":  ["Angular", "GraphQL", "Node.js", "PostgreSQL"]
+      },
+      {
+        "title": "Portal UNTUMBES",
+        "description": "Sitio web institucional de la universidad",
+        "fullDescription": "Portal institucional completo con información académica, admisión, eventos, noticias y gestión de procesos administrativos universitarios.",
+        "technologies": ["Angular", "SpringBoot", "MySQL", "Golang", "NestJs", "Redis"]
+      },
+      {
+        "title": "Trámite Documentario Digital",
+        "description": "Sistema de gestión de trámites documentarios",
+        "fullDescription": "Plataforma digital para gestión de trámites documentarios con flujos de aprobación, rastreo de documentos y notificaciones automáticas.",
+        "technologies": ["React", "Node.js", "MongoDB", "Express", "Firebase"]
+      },
+      {
+        "title": "CyberTesis UNMSM",
+        "description": "Repositorio de tesis de la Universidad Nacional Mayor de San Marcos",
+        "fullDescription": "Sistema de almacenamiento y consulta de tesis digitales de postgrado con indexación, búsqueda semántica y descarga controlada de documentos.",
+        "technologies": ["Angular", "PostgreSQL", "Spring Boot",  "React"]
+      },
+      {
+        "title": "App USIL",
+        "description": "Aplicación móvil de la Universidad San Ignacio de Loyola",
+        "fullDescription": "Aplicación móvil completa para estudiantes con acceso a calificaciones, horarios, servicios administrativos, biblioteca digital y notificaciones.",
+          "technologies": ["Flutter", "Firebase", "Node.js", "MongoDB", "PostgreSQL"]
+      },
+      {
+        "title": "Serious Game Educativo",
+        "description": "Juego educativo interactivo para aprendizaje",
+        "fullDescription": "Plataforma de juego serio para educación gamificada con desafíos, progreso, puntuación y análisis de aprendizaje para estudiantes.",
+        "technologies": ["Angular", "MySQL", "Kotlin", "WebSocket", "Golang", "Redis"]
       }
     ]
   },

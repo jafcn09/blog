@@ -12,12 +12,6 @@ const About = () => {
   return (
     <section id='about' className='about'>
       <div className='container about__container'>
-        <div className='about__me'>
-          <div className='about__me-image'>
-            <img unselectable='on' src={ME} alt="About" />
-          </div>
-        </div>
-
         <div className='about__content'>
           <h2>{t('about.title')}</h2>
 
@@ -48,8 +42,6 @@ const About = () => {
           <div className='about__bio'>
             <p>{t('about.bio')}</p>
           </div>
-
-          <a href="#contact" className='btn btn-primary'>{t('header.cta_contact')}</a>
         </div>
       </div>
     </section>

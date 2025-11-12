@@ -10,12 +10,12 @@ const Experience = () => {
     {
       category: 'frontend',
       icon: '🎨',
-      skills: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'SASS', 'Tailwind', 'Angular', 'React', 'UI/UX']
+      skills: ['HTML',  'CSS', 'Tailwind', 'Flutter', 'Angular', 'React', 'Php', 'UI/UX']
     },
     {
       category: 'backend',
       icon: '⚙️',
-      skills: ['Java Web', 'Spring Boot', 'REST API', 'AWS', 'Google Cloud', 'Azure', 'PHP', '.NET Core', 'Node.js']
+      skills: ['Spring Boot', 'NestJs', 'Express', 'Golang', 'Llml']
     },
     {
       category: 'databases',
@@ -25,7 +25,7 @@ const Experience = () => {
     {
       category: 'tools',
       icon: '🛠️',
-      skills: ['Git/GitHub', 'VS Code', 'IntelliJ IDEA', 'Postman', 'Docker', 'Jira']
+      skills: ['Git',  'Postman', 'Docker', 'Jira', 'Figma', 'Power BI', 'GCD', 'AWS' ]
     }
   ]
 

@@ -14,10 +14,45 @@
     border: 1px solid var(--color-primary-variant);
     backdrop-filter: blur(20px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    animation: slideUp 0.6s ease-out 0.3s both;
+    animation: slideDown 0.6s ease-out both;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* ============= NAV LINKS ============= */
+.nav:hover {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body:hover .nav,
+.nav:hover {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nav--hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.nav__trigger-zone {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    z-index: 99;
+    pointer-events: none;
+}
+
+.nav__trigger-zone:hover ~ .nav,
+.nav__trigger-zone:hover .nav {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
 .nav__links {
     display: flex;
     gap: 0.5rem;
@@ -69,9 +104,9 @@
     opacity: 0;
 }
 
-/* ============= NAV CONTROLS ============= */
+
 .nav__controls {
-    display: flex;
+    display: none;
     gap: 0.5rem;
     align-items: center;
     padding-left: 1rem;
@@ -130,7 +165,7 @@
     letter-spacing: 1px;
 }
 
-/* ============= MEDIA QUERIES (TABLETS) ============= */
+
 @media screen and (max-width: 1024px) {
     .nav {
         padding: 0.8rem 1.2rem;
@@ -149,7 +184,6 @@
     }
 }
 
-/* ============= MEDIA QUERIES (SMALL DEVICES) ============= */
 @media screen and (max-width: 600px) {
     .nav {
         bottom: 1.5rem;
@@ -185,7 +219,7 @@
     }
 }
 
-/* ============= ANIMATIONS ============= */
+
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -193,6 +227,17 @@
     }
     to {
         opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-30px);
+    }
+    to {
+        opacity: 0;
         transform: translateX(-50%) translateY(0);
     }
 }

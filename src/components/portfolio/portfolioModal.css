@@ -1,0 +1,209 @@
+.portfolio-modal__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.portfolio-modal__content {
+    background: var(--color-bg);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideUp 0.4s ease-out;
+}
+
+.portfolio-modal__close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-primary);
+    background: transparent;
+    color: var(--color-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.portfolio-modal__close:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: rotate(90deg);
+}
+
+.portfolio-modal__image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.portfolio-modal__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio-modal__body {
+    padding: 2rem;
+}
+
+.portfolio-modal__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.portfolio-modal__section {
+    margin-bottom: 2rem;
+}
+
+.portfolio-modal__section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.portfolio-modal__section p {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+.portfolio-modal__technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.portfolio-modal__tech-badge {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: var(--color-primary-variant);
+    color: var(--color-primary);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid var(--color-primary);
+    transition: var(--transition);
+}
+
+.portfolio-modal__tech-badge:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+
+.portfolio-modal__actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.portfolio-modal__btn {
+    flex: 1;
+    min-width: 150px;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.portfolio-modal__content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.portfolio-modal__content::-webkit-scrollbar-track {
+    background: var(--color-bg-variant);
+}
+
+.portfolio-modal__content::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+}
+
+.portfolio-modal__content::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-light);
+}
+
+
+@media screen and (max-width: 600px) {
+    .portfolio-modal__content {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .portfolio-modal__image {
+        height: 200px;
+    }
+
+    .portfolio-modal__body {
+        padding: 1.5rem;
+    }
+
+    .portfolio-modal__title {
+        font-size: 1.5rem;
+    }
+
+    .portfolio-modal__section h3 {
+        font-size: 1rem;
+    }
+
+    .portfolio-modal__actions {
+        gap: 0.8rem;
+    }
+
+    .portfolio-modal__btn {
+        min-width: 120px;
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+    }
+}

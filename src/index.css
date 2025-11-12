@@ -48,25 +48,25 @@
 
 :root[data-theme="light"] {
 
-    --color-primary: #8B7355;         
-    --color-primary-light: #A89070;  
-    --color-primary-dark: #6B5344;   
-    --color-secondary: #4B9BB5;       
-    --color-secondary-light: #6BB3D1; 
-    --color-tertiary: #D4A574;       
-    --color-accent: #C9B089;     
-    --color-accent-dark: #A89070;      
-    --color-bg: #FAFAF7;               
-    --color-bg-variant: #F1EDE8;     
-    --color-bg-light: #E8E4DF;        
-    --color-text-secondary: #6B6863;  
+    --color-primary: #4A90E2;
+    --color-primary-light: #5FA3F0;
+    --color-primary-dark: #3567C8;
+    --color-secondary: #2E8FD9;
+    --color-secondary-light: #5BADEC;
+    --color-tertiary: #D4E8F7;
+    --color-accent: #A8D4F0;
+    --color-accent-dark: #7CB8E8;
+    --color-bg: #F8FAFB;
+    --color-bg-variant: #EFF4F8;
+    --color-bg-light: #E6EEF5;
+    --color-text-secondary: #556B82;
     --color-white: #FFFFFF;
-    --color-light: rgba(0, 0, 0, 0.6);
+    --color-light: rgba(0, 0, 0, 0.48);
 
-    --color-primary-variant: rgba(139, 115, 85, 0.1);
-    --color-secondary-variant: rgba(75, 155, 181, 0.1);
+    --color-primary-variant: rgba(74, 144, 226, 0.05);
+    --color-secondary-variant: rgba(46, 143, 217, 0.05);
 
-    --color-success: #5DA05D;
+    --color-success: #52B552;
     --color-error: #C9645E;
     --color-warning: #D4A844;
 
@@ -78,13 +78,26 @@ html{
     scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar{
+:root[data-theme="dark"] ::-webkit-scrollbar,
+:root ::-webkit-scrollbar {
     background: #1f1f4b;
     width: 0.8rem;
 }
 
-::-webkit-scrollbar-thumb {
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb,
+:root ::-webkit-scrollbar-thumb {
     background: #3783ba;
+    border-radius: 4px;
+    width: 0.8rem;
+}
+
+:root[data-theme="light"] ::-webkit-scrollbar {
+    background: #F8FAFB;
+    width: 0.8rem;
+}
+
+:root[data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: #5FA3F0;
     border-radius: 4px;
     width: 0.8rem;
 }
@@ -94,10 +107,9 @@ body{
     background: var(--color-bg);
     color: var(--color-white);
     line-height: 1.7;
-    background-image: url(./assets/bg-texture.png);
 }
 
-/* ============= GENERAL STYLES ============= */
+
 .container{
     width: var(--container-width-lg);
     margin: 0 auto;

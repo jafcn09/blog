@@ -149,6 +149,24 @@ header {
     color: var(--color-white);
 }
 
+.cta .btn {
+    transition: none !important;
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+    border-color: var(--color-primary) !important;
+}
+
+.cta .btn:hover {
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+    border-color: var(--color-primary) !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.cta .btn::before {
+    display: none !important;
+}
 
 .header__socials {
     display: flex;

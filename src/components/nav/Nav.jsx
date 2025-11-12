@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './nav.css'
 import { AiOutlineHome } from 'react-icons/ai'
 import { AiOutlineUser } from 'react-icons/ai'
@@ -11,8 +11,23 @@ import { useTheme } from '../../context/ThemeContext'
 
 const Nav = () => {
   const [activeNav, setActiveNav] = useState('#header')
+  const [hideNav, setHideNav] = useState(false)
   const { i18n } = useTranslation()
   const { isDark, toggleTheme } = useTheme()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const footer = document.querySelector('footer')
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect()
+        // Si el footer está visible en la pantalla, ocultar el nav
+        setHideNav(footerRect.top < window.innerHeight)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const changeLanguage = () => {
     const newLang = i18n.language === 'es' ? 'en' : 'es'
@@ -20,7 +35,7 @@ const Nav = () => {
   }
 
   return (
-    <nav className="nav">
+    <nav className={`nav ${hideNav ? 'nav--hidden' : ''}`}>
       <div className="nav__links">
         <a
           href="#header"

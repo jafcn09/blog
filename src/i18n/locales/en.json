@@ -10,12 +10,11 @@
     "greeting": "Hi, I'm",
     "title": "Full Stack Developer",
     "description": "I transform ideas into innovative digital solutions",
-    "cta_download": "Download CV",
-    "cta_contact": "Contact Me"
+    "cta_whatsapp": "Get More Info"
   },
   "about": {
     "title": "About Me",
-    "bio": "I am a passionate developer with more than 3 years of experience creating modern web applications. I specialize in frontend and backend technologies, always seeking to learn and grow professionally.",
+    "bio": "I'm a full stack developer specialized in building high-performance web and mobile applications. My expertise spans modern frontend development, robust backends, and creating AI algorithms that integrate seamlessly into your applications. I design intelligent solutions that deploy to the cloud, scalable and secure. I transform complex ideas into impactful digital products that deliver results.",
     "expertise": "Experience",
     "expertise_desc": "3+ years developing solutions",
     "projects": "Projects",
@@ -36,31 +35,81 @@
     "projects": [
       {
         "title": "Animal Shelter",
-        "description": "Management platform for animal refuge"
+        "description": "Management platform for animal refuge",
+        "fullDescription": "Complete management system for animal shelters with adoption modules, medical history, care tracking and pet follow-up.",
+        "technologies": ["React", "Node.js", "MongoDB", "Express", "Material-UI"]
       },
       {
         "title": "Education Startup",
-        "description": "Educational platform with course management"
+        "description": "Educational platform with course management",
+        "fullDescription": "Comprehensive educational platform that allows creating, managing and distributing educational content with student progress tracking.",
+        "technologies": ["React", "Golang", "PostgreSQL", "Redux", "Stripe API"]
       },
       {
         "title": "Gym",
-        "description": "Management system for fitness center"
+        "description": "Management system for fitness center",
+        "fullDescription": "Comprehensive fitness center management system with modules for memberships, classes, trainers and progress tracking.",
+        "technologies": ["Angular", "NestJs", "MySQL", "Tailwind CSS", "Chart.js"]
       },
       {
         "title": "Health Center",
-        "description": "Medical platform for appointments and patients"
+        "description": "Medical platform for appointments and patients",
+        "fullDescription": "Professional medical platform with appointment management, patient records, prescriptions and medical reports.",
+        "technologies": ["React", "Node.js", "PostgreSQL", "JWT Auth", "Email API"]
       },
       {
         "title": "Government Entity",
-        "description": "Administrative procedures system"
+        "description": "Administrative procedures system",
+        "fullDescription": "Administrative system for managing government procedures with validation, notifications and automatic reports.",
+        "technologies": ["Angular", "Java Spring", "PostgreSQL", "Bootstrap", "PDF generation"]
       },
       {
         "title": "Wind Energy Company",
-        "description": "Energy monitoring dashboard"
+        "description": "Energy monitoring dashboard",
+        "fullDescription": "Real-time dashboard for monitoring wind turbines with data analysis, alerts and performance reports.",
+        "technologies": ["React", "WebSocket", "NestJs", "Golang", "PostgreSQL"]
       },
       {
         "title": "Technology Company",
-        "description": "Technology services portal"
+        "description": "Technology services portal",
+        "fullDescription": "B2B technology services portal with API integration, product catalog and order management system.",
+        "technologies": ["Angular", "GraphQL", "Node.js", "PostgreSQL"]
+      },
+      {
+        "title": "Academic Repository UNTUMBES",
+        "description": "Digital repository of academic theses and works",
+        "fullDescription": "Management and consultation system for academic works, theses and research documents from the National University of Tumbes with advanced search.",
+        "technologies": ["PHP", "MySQL", "Bootstrap", "jQuery"]
+      },
+      {
+        "title": "UNTUMBES Portal",
+        "description": "Institutional website of the university",
+        "fullDescription": "Complete institutional portal with academic information, admissions, events, news and management of university administrative processes.",
+        "technologies": ["Angular", "SpringBoot", "MySQL", "Golang", "NestJs", "Redis"]
+      },
+      {
+        "title": "Digital Documentary Procedures",
+        "description": "Documentary procedures management system",
+        "fullDescription": "Digital platform for managing documentary procedures with approval workflows, document tracking and automatic notifications.",
+        "technologies": ["React", "Node.js", "MongoDB", "Express", "Firebase"]
+      },
+      {
+        "title": "CyberTesis UNMSM",
+        "description": "University thesis repository system",
+        "fullDescription": "Storage and consultation system for digital graduate theses with indexing, semantic search and controlled document downloads.",
+        "technologies": ["Angular", "PostgreSQL", "Spring Boot",  "React"]
+      },
+      {
+        "title": "USIL App",
+        "description": "Mobile application for San Ignacio de Loyola University",
+        "fullDescription": "Complete mobile application for students with access to grades, schedules, administrative services, digital library and notifications.",
+        "technologies": ["Flutter", "Firebase", "Node.js", "MongoDB", "PostgreSQL"]
+      },
+      {
+        "title": "Educational Serious Game",
+        "description": "Interactive educational game for learning",
+        "fullDescription": "Serious game platform for gamified education with challenges, progress, scoring and learning analytics for students.",
+        "technologies": ["Angular", "MySQL", "Kotlin", "WebSocket", "Golang", "Redis"]
       }
     ]
   },
