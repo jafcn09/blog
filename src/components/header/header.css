@@ -352,6 +352,89 @@ header {
     }
 }
 
+/* ============= ESTILOS POR TEMA ============= */
+
+/* Modo Claro - Azul */
+:root[data-theme="light"] .header__greeting {
+    color: #4A90E2;
+}
+
+:root[data-theme="light"] .header__title {
+    color: #4A90E2;
+}
+
+:root[data-theme="light"] .header__subtitle {
+    color: #4A90E2;
+}
+
+:root[data-theme="light"] .header__bg {
+    background: radial-gradient(
+        ellipse at 50% 50%,
+        rgba(74, 144, 226, 0.1) 0%,
+        transparent 70%
+    );
+}
+
+:root[data-theme="light"] .me {
+    background: linear-gradient(135deg, #4A90E2 0%, #5FA3F0 100%);
+    box-shadow: 0 20px 50px rgba(74, 144, 226, 0.15);
+}
+
+:root[data-theme="light"] .header__socials a {
+    border-color: #4A90E2;
+    color: #4A90E2;
+}
+
+:root[data-theme="light"] .header__socials a::before {
+    background: #4A90E2;
+}
+
+:root[data-theme="light"] .header__socials::after {
+    background: linear-gradient(to bottom, #4A90E2, transparent);
+}
+
+:root[data-theme="light"] .scroll__down {
+    color: #4A90E2;
+}
+
+:root[data-theme="light"] .scroll__down span {
+    background: #4A90E2;
+}
+
+:root[data-theme="light"] .btn {
+    border-color: #4A90E2;
+    color: #4A90E2;
+}
+
+:root[data-theme="light"] .btn::before {
+    background: #4A90E2;
+}
+
+:root[data-theme="light"] .btn:hover {
+    box-shadow: 0 10px 25px rgba(74, 144, 226, 0.3);
+}
+
+/* Modo Oscuro - Dorado */
+:root[data-theme="dark"] .header__greeting {
+    color: #8B7355;
+}
+
+:root[data-theme="dark"] .header__title {
+    color: #D4A574;
+}
+
+:root[data-theme="dark"] .header__subtitle {
+    color: #8B7355;
+}
+
+:root[data-theme="dark"] .header__bg {
+    background: radial-gradient(
+        ellipse at 50% 50%,
+        rgba(139, 115, 85, 0.15) 0%,
+        transparent 70%
+    );
+}
+
 
 @media screen and (max-width: 1024px) {
     .header__container {
