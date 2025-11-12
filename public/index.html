@@ -5,6 +5,79 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BLOG DE JHAFET CÁNEPA</title>
+  <script>
+
+    (function() {
+    
+      document.addEventListener('keydown', function(event) {
+        if (event.keyCode === 123) {
+          event.preventDefault();
+          return false;
+        }
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.ctrlKey && event.shiftKey && event.keyCode === 73) {
+          event.preventDefault();
+          return false;
+        }
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.ctrlKey && event.shiftKey && event.keyCode === 67) {
+          event.preventDefault();
+          return false;
+        }
+      });
+
+      // Deshabilitar Ctrl+Shift+J (Console)
+      document.addEventListener('keydown', function(event) {
+        if (event.ctrlKey && event.shiftKey && event.keyCode === 74) {
+          event.preventDefault();
+          return false;
+        }
+      });
+
+ 
+      document.addEventListener('keydown', function(event) {
+        if (event.metaKey && event.altKey && event.keyCode === 73) {
+          event.preventDefault();
+          return false;
+        }
+      });
+
+   
+      document.addEventListener('keydown', function(event) {
+        if (event.metaKey && event.altKey && event.keyCode === 85) {
+          event.preventDefault();
+          return false;
+        }
+      });
+
+
+      document.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+        return false;
+      });
+
+ 
+      let devtools = { open: false, orientation: null };
+      const threshold = 160;
+
+      setInterval(function() {
+        if (window.outerHeight - window.innerHeight > threshold ||
+            window.outerWidth - window.innerWidth > threshold) {
+          if (!devtools.open) {
+            devtools.open = true;
+            console.clear();
+            console.log('DevTools deshabilitado');
+          }
+        } else {
+          devtools.open = false;
+        }
+      }, 500);
+    })();
+  </script>
 </head>
 <body id="home">
   <div id="root"></div>

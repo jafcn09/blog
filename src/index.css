@@ -80,15 +80,19 @@ html{
 
 :root[data-theme="dark"] ::-webkit-scrollbar,
 :root ::-webkit-scrollbar {
-    background: #1f1f4b;
+    background: rgba(139, 115, 85, 0.08);
     width: 0.8rem;
 }
 
 :root[data-theme="dark"] ::-webkit-scrollbar-thumb,
 :root ::-webkit-scrollbar-thumb {
-    background: #3783ba;
+    background: rgba(139, 115, 85, 0.4);
     border-radius: 4px;
     width: 0.8rem;
+}
+
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 115, 85, 0.6);
 }
 
 :root[data-theme="light"] ::-webkit-scrollbar {
