@@ -30,7 +30,7 @@ function obfuscateFile(filePath) {
       controlFlowFlattening: true,
       deadCodeInjection: true,
       debugProtection: true,
-      debugProtectionInterval: true,
+      debugProtectionInterval: 2000,
       disableConsoleOutput: true,
       identifierNamesGenerator: 'hexadecimal',
       log: false,
