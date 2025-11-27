@@ -1,6 +1,5 @@
 import React from 'react'
 import './experience.css'
-import { BsFillPatchCheckFill } from 'react-icons/bs'
 import { useTranslation } from 'react-i18next'
 
 const Experience = () => {
@@ -9,23 +8,19 @@ const Experience = () => {
   const skillsData = [
     {
       category: 'frontend',
-      icon: '🎨',
-      skills: ['HTML',  'CSS', 'Tailwind', 'Flutter', 'Angular', 'React', 'Php', 'UI/UX']
+      skills: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Flutter', 'Tailwind', 'UI/UX']
     },
     {
       category: 'backend',
-      icon: '⚙️',
-      skills: ['Spring Boot', 'NestJs', 'Express', 'Golang', 'Llml']
+      skills: ['Node.js', 'NestJs', 'Spring Boot', 'Express', 'Golang', 'Python', 'PHP']
     },
     {
       category: 'databases',
-      icon: '🗄️',
-      skills: ['MySQL', 'SQL Server', 'PostgreSQL', 'MongoDB', 'Firebase', 'SQLite']
+      skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Firebase', 'Redis', 'SQL Server', 'SQLite']
     },
     {
       category: 'tools',
-      icon: '🛠️',
-      skills: ['Git',  'Postman', 'Docker', 'Jira', 'Figma', 'Power BI', 'GCD', 'AWS' ]
+      skills: ['Git', 'Docker', 'AWS', 'GCP', 'Postman', 'Jira', 'Figma', 'Power BI']
     }
   ]
 
@@ -36,17 +31,14 @@ const Experience = () => {
       <div className='container experience__container'>
         {skillsData.map((skillGroup) => (
           <div key={skillGroup.category} className='experience__category'>
-            <div className='experience__category-header'>
-              <span className='experience__category-icon'>{skillGroup.icon}</span>
-              <h3>{t(`experience.${skillGroup.category}`)}</h3>
-            </div>
-
-            <div className='experience__skills'>
+            <h3 className='experience__category-title'>
+              {t(`experience.${skillGroup.category}`)}
+            </h3>
+            <div className='experience__tags'>
               {skillGroup.skills.map((skill) => (
-                <article key={skill} className='experience__skill'>
-                  <BsFillPatchCheckFill className='experience__skill-icon' />
-                  <span>{skill}</span>
-                </article>
+                <span key={skill} className='experience__tag'>
+                  {skill}
+                </span>
               ))}
             </div>
           </div>

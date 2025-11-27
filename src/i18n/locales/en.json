@@ -8,13 +8,13 @@
   },
   "header": {
     "greeting": "Hi, I'm",
-    "title": "Full Stack Developer",
-    "description": "I transform ideas into innovative digital solutions",
+    "title": "Full Stack Developer & AI Specialist",
+    "description": "I transform ideas into innovative digital solutions powered by Artificial Intelligence",
     "cta_whatsapp": "Get More Info"
   },
   "about": {
     "title": "About Me",
-    "bio": "I'm a full stack developer specialized in building high-performance web and mobile applications. My expertise spans modern frontend development, robust backends, and creating AI algorithms that integrate seamlessly into your applications. I design intelligent solutions that deploy to the cloud, scalable and secure. I transform complex ideas into impactful digital products that deliver results.",
+    "bio": "I'm a full stack developer and AI specialist, focused on building high-performance web and mobile applications. My expertise combines modern frontend development, robust backends, and the implementation of Machine Learning models and generative AI solutions. I design intelligent cloud-deployed systems that are scalable and secure. I transform complex ideas into impactful digital products that deliver real results.",
     "expertise": "Experience",
     "expertise_desc": "3+ years developing solutions",
     "projects": "Projects",
