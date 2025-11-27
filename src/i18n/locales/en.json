@@ -55,13 +55,13 @@
         "title": "Health Center",
         "description": "Medical platform for appointments and patients",
         "fullDescription": "Professional medical platform with appointment management, patient records, prescriptions and medical reports.",
-        "technologies": ["React", "Node.js", "PostgreSQL", "JWT Auth", "Email API"]
+        "technologies":  ["React", "Node.js", "PostgreSQL", "JWT Auth", "Email API"]
       },
       {
         "title": "Government Entity",
         "description": "Administrative procedures system",
         "fullDescription": "Administrative system for managing government procedures with validation, notifications and automatic reports.",
-        "technologies": ["Angular", "Java Spring", "PostgreSQL", "Bootstrap", "PDF generation"]
+        "technologies": ["Php", "Java Spring", "PostgreSQL", "Bootstrap", "PDF generation"]
       },
       {
         "title": "Wind Energy Company",
@@ -73,25 +73,25 @@
         "title": "Technology Company",
         "description": "Technology services portal",
         "fullDescription": "B2B technology services portal with API integration, product catalog and order management system.",
-        "technologies": ["Angular", "GraphQL", "Node.js", "PostgreSQL"]
+        "technologies": ["React", "GraphQL", "Node.js", "PostgreSQL"]
       },
       {
         "title": "Academic Repository UNTUMBES",
         "description": "Digital repository of academic theses and works",
         "fullDescription": "Management and consultation system for academic works, theses and research documents from the National University of Tumbes with advanced search.",
-        "technologies": ["PHP", "MySQL", "Bootstrap", "jQuery"]
+        "technologies": ["Angular", "GraphQL", "Node.js", "PostgreSQL"]
       },
       {
         "title": "UNTUMBES Portal",
         "description": "Institutional website of the university",
         "fullDescription": "Complete institutional portal with academic information, admissions, events, news and management of university administrative processes.",
-        "technologies": ["Angular", "SpringBoot", "MySQL", "Golang", "NestJs", "Redis"]
+        "technologies":  ["Angular", "SpringBoot", "MySQL", "Golang", "NestJs", "Redis"]
       },
       {
         "title": "Digital Documentary Procedures",
         "description": "Documentary procedures management system",
         "fullDescription": "Digital platform for managing documentary procedures with approval workflows, document tracking and automatic notifications.",
-        "technologies": ["React", "Node.js", "MongoDB", "Express", "Firebase"]
+        "technologies": ["Angular","MongoDB", "Express", "Spring Boot", "PostgreSQL"]
       },
       {
         "title": "CyberTesis UNMSM",
@@ -109,7 +109,7 @@
         "title": "Educational Serious Game",
         "description": "Interactive educational game for learning",
         "fullDescription": "Serious game platform for gamified education with challenges, progress, scoring and learning analytics for students.",
-        "technologies": ["Angular", "MySQL", "Kotlin", "WebSocket", "Golang", "Redis"]
+        "technologies": ["Angular", "MySQL", "Kotlin", "WebSocket", "Golang", "Redis", "Python", "MySQL", "TensorFlow"]
       }
     ]
   },
@@ -129,6 +129,53 @@
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "whatsapp": "WhatsApp"
+  },
+  "conferences": {
+    "title": "Conferences",
+    "items": [
+      {
+        "title": "AWS Security Community LATAM",
+        "subtitle": "Cybersecurity and cloud best practices",
+        "role": "Accredited Attendee",
+        "organizer": "AWS LATAM — Peru, 2024"
+      },
+      {
+        "title": "The Founder Story GCP",
+        "subtitle": "Success stories and technology strategies",
+        "role": "Participant",
+        "organizer": "Google Cloud Platform — 2024"
+      },
+      {
+        "title": "Data Governance with Microsoft Purview",
+        "subtitle": "Enterprise information management and security",
+        "role": "Attendee",
+        "organizer": "Microsoft LATAM — 2024"
+      },
+      {
+        "title": "Digital Transformation at Microsoft",
+        "subtitle": "Cloud solutions implementation",
+        "role": "Technical Attendee",
+        "organizer": "Microsoft LATAM — 2024"
+      },
+      {
+        "title": "CAMP 2023 — Innovation & Digital Marketing",
+        "subtitle": "Innovation and digital marketing strategies",
+        "role": "Participant",
+        "organizer": "Anda — Peru, 2023"
+      },
+      {
+        "title": "CAMP 2023 — Digital Leadership",
+        "subtitle": "Leadership and evolution in the digital era",
+        "role": "Participant",
+        "organizer": "Anda — Peru, 2023"
+      },
+      {
+        "title": "Microsoft Build Colombia",
+        "subtitle": "Development and tech ecosystem in LATAM",
+        "role": "International Attendee",
+        "organizer": "Microsoft + Platzi — Colombia, 2023"
+      }
+    ]
   },
   "footer": {
     "copyright": "© 2025 Jhafet Cánepa. All rights reserved."

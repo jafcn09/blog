@@ -7,6 +7,7 @@ import Nav from './components/nav/Nav'
 import About from './components/about/About'
 import Experience from './components/experience/Experience'
 import Portfolio from './components/portfolio/Portfolio'
+import Conferences from './components/conferences/Conferences'
 import Contact from './components/contact/Contact'
 import Footer from './components/footer/Footer'
 
@@ -14,15 +15,15 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Protección adicional contra DevTools
+
     if (process.env.NODE_ENV === 'production') {
-      // Deshabilitar console
+      
       console.log = () => {}
       console.warn = () => {}
       console.error = () => {}
       console.debug = () => {}
 
-      // Detector de DevTools avanzado
+  
       const detectDevTools = setInterval(() => {
         const start = performance.now()
         debugger
@@ -51,6 +52,7 @@ const App = () => {
             <About/>
             <Experience/>
             <Portfolio/>
+            <Conferences/>
             <Contact/>
             <Footer/>
           </>

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import './portfolio.css'
 import { useTranslation } from 'react-i18next'
-import { FiExternalLink } from 'react-icons/fi'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
+import { FaCode, FaExternalLinkAlt } from 'react-icons/fa'
 import PortfolioModal from './PortfolioModal'
 
 import IMG2 from '../../assets/portafolio2.jpeg'
@@ -16,17 +16,16 @@ import IMG10 from '../../assets/portafolio10.jpg'
 import IMG11 from '../../assets/portafolio11.jpg'
 import IMG12 from '../../assets/portafolio12.jpg'
 import IMG13 from '../../assets/portafolio13.jpg'
-import IMG14 from '../../assets/portafolio14.jpeg'
 import IMG15 from '../../assets/portafolio15.jpg'
 import IMG16 from '../../assets/portafolio16.jpg'
 
 const Portfolio = () => {
   const { t } = useTranslation()
-  const [hoveredId, setHoveredId] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedProject, setSelectedProject] = useState(null)
-  const itemsPerPage = 5
-  const autoplayInterval = 2000 // 2 segundos
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [touchStart, setTouchStart] = useState(null)
+  const [touchEnd, setTouchEnd] = useState(null)
 
   const getTechnologies = (index) => {
     const techs = t(`portfolio.projects.${index}.technologies`, { returnObjects: true })
@@ -153,74 +152,141 @@ const Portfolio = () => {
     }
   ]
 
-  const totalPages = Math.ceil(projects.length / itemsPerPage)
-  const visibleProjects = projects.slice(currentIndex, currentIndex + itemsPerPage)
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % projects.length)
+  }, [projects.length])
 
-  // Autoplay effect
+  const handlePrev = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length)
+  }, [projects.length])
+
+  const handleIndicatorClick = (index) => {
+    setCurrentIndex(index)
+    setIsAutoPlaying(false)
+    setTimeout(() => setIsAutoPlaying(true), 8000)
+  }
+
+  const pauseAutoplay = () => {
+    setIsAutoPlaying(false)
+    setTimeout(() => setIsAutoPlaying(true), 8000)
+  }
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const minSwipeDistance = 50
+    if (Math.abs(distance) > minSwipeDistance) {
+      if (distance > 0) {
+        handleNext()
+      } else {
+        handlePrev()
+      }
+      pauseAutoplay()
+    }
+  }
+
+  // Autoplay
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + itemsPerPage >= projects.length ? 0 : prev + itemsPerPage))
-    }, autoplayInterval)
-
+    if (!isAutoPlaying) return
+    const interval = setInterval(handleNext, 4000)
     return () => clearInterval(interval)
-  }, [projects.length, itemsPerPage, autoplayInterval])
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - itemsPerPage < 0 ? Math.max(0, projects.length - itemsPerPage) : prev - itemsPerPage))
-  }
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + itemsPerPage >= projects.length ? 0 : prev + itemsPerPage))
-  }
+  }, [isAutoPlaying, handleNext])
 
   return (
     <section id='portfolio' className='portfolio'>
       <h2>{t('portfolio.title')}</h2>
 
       <div className='container portfolio__wrapper'>
-        <button className='portfolio__btn portfolio__btn--prev' onClick={handlePrev} title='Previous'>
+        <button
+          className='portfolio__btn portfolio__btn--prev'
+          onClick={() => { handlePrev(); pauseAutoplay() }}
+          title='Previous'
+        >
           <MdChevronLeft />
         </button>
 
-        <div className='portfolio__container'>
-          {visibleProjects.map((project) => (
-            <article
-              key={project.id}
-              className='portfolio__item'
-              onMouseEnter={() => setHoveredId(project.id)}
-              onMouseLeave={() => setHoveredId(null)}
-              onClick={() => setSelectedProject(project)}
-            >
-              <div className='portfolio__item-image'>
-                <img src={project.image} alt={project.title} />
-                <div className='portfolio__item-overlay'>
-                  <div className='portfolio__item-content'>
-                    <h3>{project.title}</h3>
-                    <p>{project.description}</p>
-                    <button className='btn btn-primary'>
-                      Ver Detalles
+        <div
+          className='portfolio__carousel'
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div
+            className='portfolio__slides'
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {projects.map((project) => (
+              <div key={project.id} className='portfolio__slide'>
+                <div
+                  className='portfolio__card'
+                  onClick={() => setSelectedProject(project)}
+                >
+                  <div className='portfolio__image-container'>
+                    <img src={project.image} alt={project.title} />
+                    <div className='portfolio__badge'>
+                      <FaCode />
+                      <span>Proyecto</span>
+                    </div>
+                  </div>
+                  <div className='portfolio__content'>
+                    <h3 className='portfolio__title'>{project.title}</h3>
+                    <p className='portfolio__subtitle'>{project.description}</p>
+                    <div className='portfolio__technologies'>
+                      {project.technologies.slice(0, 3).map((tech, index) => (
+                        <span key={index} className='portfolio__tech-tag'>{tech}</span>
+                      ))}
+                      {project.technologies.length > 3 && (
+                        <span className='portfolio__tech-tag'>+{project.technologies.length - 3}</span>
+                      )}
+                    </div>
+                    <button className='portfolio__view-btn'>
+                      <FaExternalLinkAlt />
+                      <span>Ver Detalles</span>
                     </button>
                   </div>
                 </div>
               </div>
-            </article>
-          ))}
+            ))}
+          </div>
         </div>
 
-        <button className='portfolio__btn portfolio__btn--next' onClick={handleNext} title='Next'>
+        <button
+          className='portfolio__btn portfolio__btn--next'
+          onClick={() => { handleNext(); pauseAutoplay() }}
+          title='Next'
+        >
           <MdChevronRight />
         </button>
       </div>
 
       <div className='portfolio__indicators'>
-        {Array.from({ length: totalPages }).map((_, index) => (
+        {projects.map((_, index) => (
           <button
             key={index}
-            className={`portfolio__indicator ${currentIndex === index * itemsPerPage ? 'active' : ''}`}
-            onClick={() => setCurrentIndex(index * itemsPerPage)}
-            title={`Page ${index + 1}`}
+            className={`portfolio__indicator ${currentIndex === index ? 'active' : ''}`}
+            onClick={() => handleIndicatorClick(index)}
+            title={`Slide ${index + 1}`}
           />
         ))}
+      </div>
+
+      <div className='portfolio__progress'>
+        <div
+          className='portfolio__progress-bar'
+          style={{
+            width: `${((currentIndex + 1) / projects.length) * 100}%`
+          }}
+        />
       </div>
 
       <PortfolioModal

@@ -62,7 +62,7 @@
         "title": "Entidad Gubernamental",
         "description": "Sistema administrativo de trámites",
         "fullDescription": "Sistema administrativo para gestión de trámites gubernamentales con validación, notificaciones y reportes automáticos.",
-        "technologies":["Angular", "Java Spring", "PostgreSQL", "Bootstrap", "PDF generation"]
+        "technologies":["Php", "Java Spring", "PostgreSQL", "Bootstrap", "PDF generation"]
       },
       {
         "title": "Empresa Eólica",
@@ -74,7 +74,7 @@
         "title": "Empresa Tecnológica",
         "description": "Portal de servicios tecnológicos",
         "fullDescription": "Portal B2B de servicios tecnológicos con integración de APIs, catálogo de productos y sistema de pedidos.",
-        "technologies": ["Next.js", "GraphQL", "Node.js", "PostgreSQL", "Stripe"]
+        "technologies": ["React", "GraphQL", "Node.js", "PostgreSQL"]
       },
       {
         "title": "Repositorio Académico UNTUMBES",
@@ -92,7 +92,7 @@
         "title": "Trámite Documentario Digital",
         "description": "Sistema de gestión de trámites documentarios",
         "fullDescription": "Plataforma digital para gestión de trámites documentarios con flujos de aprobación, rastreo de documentos y notificaciones automáticas.",
-        "technologies": ["React", "Node.js", "MongoDB", "Express", "Firebase"]
+        "technologies": ["Angular","MongoDB", "Express", "Spring Boot", "PostgreSQL"]
       },
       {
         "title": "CyberTesis UNMSM",
@@ -110,7 +110,7 @@
         "title": "Serious Game Educativo",
         "description": "Juego educativo interactivo para aprendizaje",
         "fullDescription": "Plataforma de juego serio para educación gamificada con desafíos, progreso, puntuación y análisis de aprendizaje para estudiantes.",
-        "technologies": ["Angular", "MySQL", "Kotlin", "WebSocket", "Golang", "Redis"]
+        "technologies": ["Angular", "MySQL", "Kotlin", "WebSocket", "Golang", "Redis", "Python", "TensorFlow"]
       }
     ]
   },
@@ -130,6 +130,53 @@
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "whatsapp": "WhatsApp"
+  },
+  "conferences": {
+    "title": "Conferencias",
+    "items": [
+      {
+        "title": "AWS Security Community LATAM",
+        "subtitle": "Ciberseguridad y mejores prácticas en la nube",
+        "role": "Asistente acreditado",
+        "organizer": "AWS LATAM — Perú, 2024"
+      },
+      {
+        "title": "The Founder Story GCP",
+        "subtitle": "Historias de éxito y estrategias en tecnología",
+        "role": "Participante",
+        "organizer": "Google Cloud Platform — 2024"
+      },
+      {
+        "title": "Gobierno de Datos con Microsoft Purview",
+        "subtitle": "Gestión y seguridad de la información empresarial",
+        "role": "Asistente",
+        "organizer": "Microsoft LATAM — 2024"
+      },
+      {
+        "title": "Transformación Digital en Microsoft",
+        "subtitle": "Implementación de soluciones en la nube",
+        "role": "Asistente técnico",
+        "organizer": "Microsoft LATAM — 2024"
+      },
+      {
+        "title": "CAMP 2023 — Innovación y Marketing Digital",
+        "subtitle": "Innovación y estrategias en marketing digital",
+        "role": "Participante",
+        "organizer": "AndA — Perú, 2023"
+      },
+      {
+        "title": "CAMP 2023 — Liderazgo Digital",
+        "subtitle": "Liderazgo y evolución en la era digital",
+        "role": "Participante",
+        "organizer": "AndA — Perú, 2023"
+      },
+      {
+        "title": "Microsoft Build Colombia",
+        "subtitle": "Desarrollo y ecosistema tecnológico en LATAM",
+        "role": "Asistente internacional",
+        "organizer": "Microsoft + Platzi — Colombia, 2023"
+      }
+    ]
   },
   "footer": {
     "copyright": "© 2025 Jhafet Cánepa. Todos los derechos reservados."
