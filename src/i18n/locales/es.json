@@ -31,14 +31,39 @@
   },
   "portfolio": {
     "title": "Portafolio",
+    "filter_all": "Todos los Proyectos",
     "view_project": "Ver Proyecto",
     "projects": [
+      {
+        "title": "VideoTranscribe - UNTUMBES",
+        "description": "Plataforma de transcripción de video con IA",
+        "fullDescription": "Plataforma de transcripción de video con inteligencia artificial desarrollada para la Universidad Nacional de Tumbes. Convierte automáticamente video a texto sin importar el idioma, permite subir archivos locales, pegar URLs de videos, grabar audio directamente desde el navegador y genera transcripciones precisas con resúmenes automáticos.",
+        "technologies": ["Angular", "Python", "OpenAI API", "FastAPI", "PostgreSQL", "WebRTC", "FFmpeg"]
+      },
+      {
+        "title": "PRISM-PR Review",
+        "description": "Análisis semántico de Pull Requests",
+        "fullDescription": "Aplicación integrada con GitHub que analiza semánticamente los Pull Requests antes del merge. Soporta más de 12 lenguajes de programación y entrega reportes de seguridad, rendimiento, calidad de código y métricas directamente en GitHub.",
+        "technologies": ["TypeScript", "Node.js", "Express", "GitHub API", "PostgreSQL", "Docker", "AWS"]
+      },
+      {
+        "title": "Sistema de Gestión de Citas",
+        "description": "Plataforma integral de gestión de citas médicas",
+        "fullDescription": "Sistema completo para gestión de citas médicas con calendario interactivo, notificaciones automáticas, gestión de pacientes, doctores y especialidades. Incluye panel administrativo y reportes estadísticos en tiempo real.",
+        "technologies": ["React", "Node.js", "Golang", "NestJS", "PostgreSQL", "Redis", "WebSockets"]
+      },
+      {
+        "title": "CodeResolutions - Consultoría Tech (Co-Fundador)",
+        "description": "Soluciones de desarrollo y consultoría tecnológica",
+        "fullDescription": "Co-fundador de empresa de consultoría tecnológica especializada en desarrollo de software a medida, transformación digital y arquitectura de sistemas. Desarrollo de aplicaciones web, móviles y soluciones empresariales con las últimas tecnologías.",
+        "technologies": ["React", "Angular", "Node.js", "Golang", "NestJS", "Spring Boot", "AWS", "Docker", "Kubernetes", "Cloudflare"]
+      },
       {
         "title": "Albergue Canina",
         "description": "Plataforma de gestión para refugio de animales",
         "fullDescription": "Sistema completo de gestión para refugios de animales con módulos de adopción, historial médico, cuidados y seguimiento de mascotas.",
                 "technologies": ["React", "Node.js", "MongoDB", "Express", "Material-UI"]
-        
+
       },
       {
         "title": "Startup Educación",

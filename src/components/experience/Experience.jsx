@@ -20,7 +20,7 @@ const Experience = () => {
     },
     {
       category: 'tools',
-      skills: ['Git', 'Docker', 'AWS', 'GCP', 'Postman', 'Jira', 'Figma', 'Power BI']
+      skills: ['Git', 'Docker', 'AWS', 'GCP', 'Postman', 'Jira', 'Figma', 'Power BI', 'Looker Studio', 'Driblle', 'Pencil']
     }
   ]
 

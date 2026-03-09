@@ -31,8 +31,33 @@
   },
   "portfolio": {
     "title": "Portfolio",
+    "filter_all": "All Projects",
     "view_project": "View Project",
     "projects": [
+      {
+        "title": "VideoTranscribe - UNTUMBES",
+        "description": "AI-powered video transcription platform",
+        "fullDescription": "Video transcription platform with artificial intelligence developed for the National University of Tumbes. Automatically converts video to text regardless of language, allows uploading local files, pasting video URLs, recording audio directly from the browser and generates accurate transcriptions with automatic summaries.",
+        "technologies": ["Angular", "Python", "OpenAI API", "FastAPI", "PostgreSQL", "WebRTC", "FFmpeg"]
+      },
+      {
+        "title": "PRISM-PR Review",
+        "description": "Semantic analysis of Pull Requests",
+        "fullDescription": "GitHub integrated application that semantically analyzes Pull Requests before merging. Supports over 12 programming languages and delivers security, performance, code quality reports and metrics directly in GitHub.",
+        "technologies": ["TypeScript", "Node.js", "Express", "GitHub API", "PostgreSQL", "Docker", "AWS"]
+      },
+      {
+        "title": "Appointment Management System",
+        "description": "Comprehensive medical appointment management platform",
+        "fullDescription": "Complete system for managing medical appointments with interactive calendar, automatic notifications, patient management, doctors and specialties. Includes administrative panel and real-time statistical reports.",
+        "technologies": ["React", "Node.js", "Golang", "NestJS", "PostgreSQL", "Redis", "WebSockets"]
+      },
+      {
+        "title": "CodeResolutions - Tech Consultancy (Co-Founder)",
+        "description": "Development and technology consulting solutions",
+        "fullDescription": "Co-founder of technology consulting company specializing in custom software development, digital transformation and system architecture. Development of web, mobile applications and enterprise solutions with the latest technologies.",
+        "technologies": ["React", "Angular", "Node.js", "Golang", "NestJS", "Spring Boot", "AWS", "Docker", "Kubernetes", "Cloudflare"]
+      },
       {
         "title": "Animal Shelter",
         "description": "Management platform for animal refuge",

@@ -2,8 +2,9 @@ import React from 'react'
 import { MdClose } from 'react-icons/md'
 import { FiExternalLink } from 'react-icons/fi'
 import './portfolioModal.css'
+import LazyImage from '../common/LazyImage'
 
-const PortfolioModal = ({ project, onClose }) => {
+const PortfolioModal = React.memo(({ project, onClose }) => {
   if (!project) return null
 
   return (
@@ -14,7 +15,14 @@ const PortfolioModal = ({ project, onClose }) => {
         </button>
 
         <div className='portfolio-modal__image'>
-          <img src={project.image} alt={project.title} />
+          <LazyImage
+            src={project.image}
+            alt={project.title}
+            className="portfolio-modal__lazy-image"
+            effect="blur"
+            threshold={0}
+            wrapperClassName="portfolio-modal__image-wrapper"
+          />
         </div>
 
         <div className='portfolio-modal__body'>
@@ -61,6 +69,6 @@ const PortfolioModal = ({ project, onClose }) => {
       </div>
     </div>
   )
-}
+})
 
 export default PortfolioModal
