@@ -35,6 +35,9 @@ const Portfolio = React.memo(() => {
   const [touchEnd, setTouchEnd] = useState(null)
   const [selectedTech, setSelectedTech] = useState('All')
   const [isLoading, setIsLoading] = useState(true)
+  const [techIndex, setTechIndex] = useState(0)
+  const [previousTech, setPreviousTech] = useState(null)
+  const [isFilterTransitioning, setIsFilterTransitioning] = useState(false)
 
   // Memoize getTechnologies function to prevent recreation on every render
   const getTechnologies = useCallback((index) => {
@@ -45,7 +48,7 @@ const Portfolio = React.memo(() => {
   // Extract main technologies only (not all)
   const allTechnologies = useMemo(() => {
     // Solo mostrar las tecnologías principales
-    return ['React', 'Angular', 'Python', 'Node.js', 'Golang', 'NestJS', 'Docker', 'AWS']
+    return ['All', 'React', 'Angular', 'Python', 'Node.js', 'Golang', 'NestJS', 'Docker', 'AWS']
   }, [])
 
   // Memoize projects array to prevent recreation on every render
@@ -215,9 +218,17 @@ const Portfolio = React.memo(() => {
     )
   }, [projects, selectedTech])
 
-  // Reset currentIndex when filter changes
+  // Reset currentIndex when filter changes with transition effect
   useEffect(() => {
+    setIsFilterTransitioning(true)
     setCurrentIndex(0)
+
+    // Reset transition state after animation
+    const timer = setTimeout(() => {
+      setIsFilterTransitioning(false)
+    }, 600)
+
+    return () => clearTimeout(timer)
   }, [selectedTech])
 
   const handleNext = useCallback(() => {
@@ -272,14 +283,42 @@ const Portfolio = React.memo(() => {
   const handleProjectSelect = useCallback((project) => setSelectedProject(project), [])
 
   // Memoize technology selection handler to prevent recreation on every render
-  const handleTechSelect = useCallback((tech) => setSelectedTech(tech), [])
+  const handleTechSelect = useCallback((tech) => {
+    setPreviousTech(selectedTech)
+    setSelectedTech(tech)
+    setTechIndex(allTechnologies.indexOf(tech))
 
-  // Autoplay
+    // Limpiar la clase fading-out después de 800ms
+    setTimeout(() => {
+      setPreviousTech(null)
+    }, 800)
+  }, [allTechnologies, selectedTech])
+
+  // Autoplay for projects
   useEffect(() => {
     if (!isAutoPlaying) return
     const interval = setInterval(handleNext, 4000)
     return () => clearInterval(interval)
   }, [isAutoPlaying, handleNext])
+
+  // Autoplay for technology filters
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTechIndex(prev => {
+        const nextIndex = (prev + 1) % allTechnologies.length
+        setPreviousTech(selectedTech)
+        setSelectedTech(allTechnologies[nextIndex])
+
+        // Limpiar la clase fading-out después de 800ms
+        setTimeout(() => {
+          setPreviousTech(null)
+        }, 800)
+
+        return nextIndex
+      })
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [allTechnologies, selectedTech])
 
   // Simulate loading delay
   useEffect(() => {
@@ -296,19 +335,17 @@ const Portfolio = React.memo(() => {
       {/* Technology Filter Bar */}
       <div className='portfolio__filter'>
         <div className='portfolio__filter-container'>
-          <button
-            className={`portfolio__filter-btn ${selectedTech === 'All' ? 'active' : ''}`}
-            onClick={() => handleTechSelect('All')}
-          >
-            {t('portfolio.filter_all')}
-          </button>
           {allTechnologies.map((tech) => (
             <button
               key={tech}
-              className={`portfolio__filter-btn ${selectedTech === tech ? 'active' : ''}`}
+              className={`portfolio__filter-btn ${
+                selectedTech === tech ? 'active' : ''
+              } ${
+                previousTech === tech ? 'fading-out' : ''
+              }`}
               onClick={() => handleTechSelect(tech)}
             >
-              {tech}
+              {tech === 'All' ? t('portfolio.filter_all') : tech}
             </button>
           ))}
         </div>
@@ -352,11 +389,17 @@ const Portfolio = React.memo(() => {
             </div>
           ) : (
             <div
-              className='portfolio__slides'
+              className={`portfolio__slides ${isFilterTransitioning ? 'filtering' : ''}`}
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              {filteredProjects.map((project) => (
-                <div key={project.id} className='portfolio__slide'>
+              {filteredProjects.map((project, index) => (
+                <div
+                  key={project.id}
+                  className={`portfolio__slide ${isFilterTransitioning ? 'slide-entering' : ''}`}
+                  style={{
+                    animationDelay: isFilterTransitioning ? `${index * 100}ms` : '0ms'
+                  }}
+                >
                   <div
                     className='portfolio__card'
                     onClick={() => handleProjectSelect(project)}
@@ -370,7 +413,7 @@ const Portfolio = React.memo(() => {
                         threshold={50}
                         wrapperClassName="portfolio__lazy-wrapper"
                       />
-                      <div className='portfolio__badge'>
+                      <div className='portfolio__year-badge'>
                         <FaCode />
                         <span>Proyecto</span>
                       </div>
@@ -378,16 +421,18 @@ const Portfolio = React.memo(() => {
                     <div className='portfolio__content'>
                       <h3 className='portfolio__title'>{project.title}</h3>
                       <p className='portfolio__subtitle'>{project.description}</p>
-                      <div className='portfolio__technologies'>
-                        {project.technologies.slice(0, 3).map((tech, index) => (
-                          <span key={index} className='portfolio__tech-tag'>{tech}</span>
-                        ))}
-                        {project.technologies.length > 3 && (
-                          <span className='portfolio__tech-tag'>+{project.technologies.length - 3}</span>
-                        )}
+                      <div className='portfolio__details'>
+                        <div className='portfolio__detail'>
+                          <FaCode />
+                          <span>{project.technologies.slice(0, 2).join(', ')}</span>
+                        </div>
+                        <div className='portfolio__detail'>
+                          <FaExternalLinkAlt />
+                          <span>{t('portfolio.website')}</span>
+                        </div>
                       </div>
                       <button className='portfolio__view-btn'>
-                        <FaExternalLinkAlt />
+                        <FaCode />
                         <span>Ver Detalles</span>
                       </button>
                     </div>

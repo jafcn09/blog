@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/blog/static/css/main.fa9ad8e5.css",
-    "main.js": "/blog/static/js/main.d2dad880.js",
+    "main.css": "/blog/static/css/main.3ec7f740.css",
+    "main.js": "/blog/static/js/main.889f7384.js",
+    "static/media/seriousgame.jpg": "/blog/static/media/seriousgame.83f41db13f6e1d92f578.jpg",
     "static/media/conf1.jpg": "/blog/static/media/conf1.f6676ef15517fca2702a.jpg",
     "static/media/conf3.jpg": "/blog/static/media/conf3.6686ced64f8c9b7a5a78.jpg",
     "static/media/portafolio9.jpeg": "/blog/static/media/portafolio9.053e12820dbafe8d3cd7.jpeg",
@@ -24,11 +25,11 @@
     "static/media/portafolio6.png": "/blog/static/media/portafolio6.b6347394fc2ff17d9a4c.png",
     "static/media/portafolio5.jpg": "/blog/static/media/portafolio5.7bc0a23321f1feaf970d.jpg",
     "index.html": "/blog/index.html",
-    "main.fa9ad8e5.css.map": "/blog/static/css/main.fa9ad8e5.css.map",
-    "main.d2dad880.js.map": "/blog/static/js/main.d2dad880.js.map"
+    "main.3ec7f740.css.map": "/blog/static/css/main.3ec7f740.css.map",
+    "main.889f7384.js.map": "/blog/static/js/main.889f7384.js.map"
   },
   "entrypoints": [
-    "static/css/main.fa9ad8e5.css",
-    "static/js/main.d2dad880.js"
+    "static/css/main.3ec7f740.css",
+    "static/js/main.889f7384.js"
   ]
 }
