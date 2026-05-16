@@ -130,7 +130,7 @@ const Portfolio = React.memo(() => {
       fullDescription: t('portfolio.projects.8.fullDescription'),
       technologies: getTechnologies(8),
       image: IMG6,
-      link: 'https://www.munitumbes.gob.pe/muni20232026/'
+      link: 'https://www.munitumbes.gob.pe/web-mpt/'
     },
     {
       id: 10,

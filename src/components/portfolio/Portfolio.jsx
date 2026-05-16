@@ -5,6 +5,7 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 import { FaCode, FaExternalLinkAlt } from 'react-icons/fa'
 import PortfolioModal from './PortfolioModal'
 import LazyImage from '../common/LazyImage'
+import SkeletonLoader from '../common/SkeletonLoader'
 
 import VIDEOTRANSCRIBE from '../../assets/videotranscribe.jpg'
 import PRISMPR from '../../assets/prismpr.jpg'
@@ -23,6 +24,7 @@ import IMG12 from '../../assets/portafolio12.jpg'
 import IMG13 from '../../assets/portafolio13.jpg'
 import IMG15 from '../../assets/portafolio15.jpg'
 import IMG16 from '../../assets/portafolio16.jpg'
+import SERIOUSGAME from '../../assets/seriousgame.jpg'
 
 const Portfolio = React.memo(() => {
   const { t } = useTranslation()
@@ -32,6 +34,7 @@ const Portfolio = React.memo(() => {
   const [touchStart, setTouchStart] = useState(null)
   const [touchEnd, setTouchEnd] = useState(null)
   const [selectedTech, setSelectedTech] = useState('All')
+  const [isLoading, setIsLoading] = useState(true)
 
   // Memoize getTechnologies function to prevent recreation on every render
   const getTechnologies = useCallback((index) => {
@@ -126,7 +129,7 @@ const Portfolio = React.memo(() => {
       fullDescription: t('portfolio.projects.8.fullDescription'),
       technologies: getTechnologies(8),
       image: IMG6,
-      link: 'https://www.munitumbes.gob.pe/muni20232026/'
+      link: 'https://www.munitumbes.gob.pe/web-mpt/'
     },
     {
       id: 10,
@@ -190,6 +193,17 @@ const Portfolio = React.memo(() => {
       technologies: getTechnologies(15),
       image: IMG13,
       link: 'https://play.google.com/store/search?q=app%20usil&c=apps&hl=es_PE'
+    },
+    {
+      id: 17,
+      title: t('portfolio.projects.16.title'),
+      description: t('portfolio.projects.16.description'),
+      fullDescription: t('portfolio.projects.16.fullDescription'),
+      technologies: getTechnologies(16),
+      image: SERIOUSGAME,
+      webLink: t('portfolio.projects.16.webLink'),
+      playStoreLink: t('portfolio.projects.16.playStoreLink'),
+      link: 'https://serious-game.42web.io/main/views/index.php'
     }
   ], [t, getTechnologies])
 
@@ -267,6 +281,14 @@ const Portfolio = React.memo(() => {
     return () => clearInterval(interval)
   }, [isAutoPlaying, handleNext])
 
+  // Simulate loading delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <section id='portfolio' className='portfolio'>
       <h2>{t('portfolio.title')}</h2>
@@ -307,50 +329,73 @@ const Portfolio = React.memo(() => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div
-            className='portfolio__slides'
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {filteredProjects.map((project) => (
-              <div key={project.id} className='portfolio__slide'>
-                <div
-                  className='portfolio__card'
-                  onClick={() => handleProjectSelect(project)}
-                >
+          {isLoading ? (
+            <div className='portfolio__slides'>
+              <div className='portfolio__slide'>
+                <div className='portfolio__card'>
                   <div className='portfolio__image-container'>
-                    <LazyImage
-                      src={project.image}
-                      alt={project.title}
-                      className="portfolio__image"
-                      effect="blur"
-                      threshold={50}
-                      wrapperClassName="portfolio__lazy-wrapper"
-                    />
-                    <div className='portfolio__badge'>
-                      <FaCode />
-                      <span>Proyecto</span>
-                    </div>
+                    <SkeletonLoader variant="image" height="400px" />
                   </div>
-                  <div className='portfolio__content'>
-                    <h3 className='portfolio__title'>{project.title}</h3>
-                    <p className='portfolio__subtitle'>{project.description}</p>
-                    <div className='portfolio__technologies'>
-                      {project.technologies.slice(0, 3).map((tech, index) => (
-                        <span key={index} className='portfolio__tech-tag'>{tech}</span>
-                      ))}
-                      {project.technologies.length > 3 && (
-                        <span className='portfolio__tech-tag'>+{project.technologies.length - 3}</span>
-                      )}
+                  <div className='portfolio__content' style={{padding: '1.5rem'}}>
+                    <SkeletonLoader variant="title" width="80%" />
+                    <div style={{marginTop: '1rem'}}>
+                      <SkeletonLoader variant="text" count={2} />
                     </div>
-                    <button className='portfolio__view-btn'>
-                      <FaExternalLinkAlt />
-                      <span>Ver Detalles</span>
-                    </button>
+                    <div className='portfolio__technologies' style={{marginTop: '1rem'}}>
+                      <SkeletonLoader variant="button" width="80px" />
+                      <SkeletonLoader variant="button" width="60px" />
+                      <SkeletonLoader variant="button" width="70px" />
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ) : (
+            <div
+              className='portfolio__slides'
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {filteredProjects.map((project) => (
+                <div key={project.id} className='portfolio__slide'>
+                  <div
+                    className='portfolio__card'
+                    onClick={() => handleProjectSelect(project)}
+                  >
+                    <div className='portfolio__image-container'>
+                      <LazyImage
+                        src={project.image}
+                        alt={project.title}
+                        className="portfolio__image"
+                        effect="blur"
+                        threshold={50}
+                        wrapperClassName="portfolio__lazy-wrapper"
+                      />
+                      <div className='portfolio__badge'>
+                        <FaCode />
+                        <span>Proyecto</span>
+                      </div>
+                    </div>
+                    <div className='portfolio__content'>
+                      <h3 className='portfolio__title'>{project.title}</h3>
+                      <p className='portfolio__subtitle'>{project.description}</p>
+                      <div className='portfolio__technologies'>
+                        {project.technologies.slice(0, 3).map((tech, index) => (
+                          <span key={index} className='portfolio__tech-tag'>{tech}</span>
+                        ))}
+                        {project.technologies.length > 3 && (
+                          <span className='portfolio__tech-tag'>+{project.technologies.length - 3}</span>
+                        )}
+                      </div>
+                      <button className='portfolio__view-btn'>
+                        <FaExternalLinkAlt />
+                        <span>Ver Detalles</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <button

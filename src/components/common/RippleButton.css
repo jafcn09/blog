@@ -1,0 +1,156 @@
+.ripple-btn {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ripple-btn__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ripple-btn__ripples {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.ripple-btn__ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: rippleEffect 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.ripple-btn--small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    min-height: 32px;
+}
+
+.ripple-btn--medium {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9375rem;
+    min-height: 40px;
+}
+
+.ripple-btn--large {
+    padding: 1rem 2rem;
+    font-size: 1.0625rem;
+    min-height: 48px;
+}
+
+.ripple-btn--primary {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    border: 1px solid var(--color-primary);
+}
+
+.ripple-btn--primary:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.ripple-btn--primary:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.ripple-btn--secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+}
+
+.ripple-btn--secondary:hover:not(:disabled) {
+    background: var(--color-bg-variant);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.ripple-btn--tertiary {
+    background: var(--color-bg-variant);
+    color: var(--color-text-primary);
+    border: 1px solid transparent;
+}
+
+.ripple-btn--tertiary:hover:not(:disabled) {
+    background: var(--color-bg-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.ripple-btn--ghost {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid transparent;
+}
+
+.ripple-btn--ghost:hover:not(:disabled) {
+    background: var(--color-bg-variant);
+    color: var(--color-primary);
+}
+
+.ripple-btn--disabled,
+.ripple-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.ripple-btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .ripple-btn:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .ripple-btn:active:not(:disabled) {
+        opacity: 0.9;
+        transform: scale(0.98);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ripple-btn {
+        transition-duration: 0.01ms;
+    }
+
+    .ripple-btn__ripple {
+        animation-duration: 0.01ms;
+    }
+}

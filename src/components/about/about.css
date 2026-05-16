@@ -1,5 +1,10 @@
 .about {
-    animation: fadeInUp 0.8s ease-out;
+    position: relative;
+}
+
+.about__container {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
 }
 
 .about__container {
@@ -25,12 +30,36 @@
     border: 1px solid var(--color-primary);
     border-radius: 1rem;
     padding: 1.25rem 1.5rem;
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.about__stat:nth-child(1) { animation-delay: 0.3s; }
+.about__stat:nth-child(2) { animation-delay: 0.4s; }
+.about__stat:nth-child(3) { animation-delay: 0.5s; }
+
+.about__stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    transition: left 0.8s ease;
+}
+
+.about__stat:hover::before {
+    left: 100%;
 }
 
 .about__stat:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(139, 115, 85, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(139, 115, 85, 0.15);
+    border-color: var(--color-primary);
 }
 
 .about__stat-icon {
@@ -39,11 +68,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
     border-radius: 0.75rem;
     color: var(--color-white);
     font-size: 1.4rem;
     flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about__stat:hover .about__stat-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 5px 15px rgba(139, 115, 85, 0.3);
 }
 
 .about__stat-info {
@@ -73,6 +108,10 @@
     border-radius: 1rem;
     padding: 2rem;
     position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
 }
 
 .about__bio::before {
@@ -82,8 +121,19 @@
     left: 0;
     width: 4px;
     height: 100%;
-    background: var(--color-primary);
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
     border-radius: 1rem 0 0 1rem;
+    transition: width 0.4s ease;
+}
+
+.about__bio:hover::before {
+    width: 6px;
+}
+
+.about__bio:hover {
+    transform: translateX(5px);
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 30px rgba(139, 115, 85, 0.1);
 }
 
 .about__bio p {

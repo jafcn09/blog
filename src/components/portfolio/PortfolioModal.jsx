@@ -1,6 +1,7 @@
 import React from 'react'
 import { MdClose } from 'react-icons/md'
 import { FiExternalLink } from 'react-icons/fi'
+import { FaGooglePlay, FaGlobe } from 'react-icons/fa'
 import './portfolioModal.css'
 import LazyImage from '../common/LazyImage'
 
@@ -53,14 +54,35 @@ const PortfolioModal = React.memo(({ project, onClose }) => {
           </div>
 
           <div className='portfolio-modal__actions'>
-            <a
-              href={project.link}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='btn btn-primary portfolio-modal__btn'
-            >
-              <FiExternalLink /> Visitar Proyecto
-            </a>
+            {project.webLink && project.playStoreLink ? (
+              <>
+                <a
+                  href={project.webLink}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary portfolio-modal__btn'
+                >
+                  <FaGlobe /> Ver en Web
+                </a>
+                <a
+                  href={project.playStoreLink}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary portfolio-modal__btn'
+                >
+                  <FaGooglePlay /> Google Play
+                </a>
+              </>
+            ) : (
+              <a
+                href={project.link}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='btn btn-primary portfolio-modal__btn'
+              >
+                <FiExternalLink /> Visitar Proyecto
+              </a>
+            )}
             <button className='btn portfolio-modal__btn' onClick={onClose}>
               Cerrar
             </button>

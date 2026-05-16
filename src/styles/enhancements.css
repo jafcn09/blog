@@ -1,0 +1,347 @@
+/* Mejoras visuales sutiles sin romper el diseño existente */
+
+/* Suavizar todas las transiciones */
+* {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mejoras para las tarjetas */
+.about__card,
+.experience__card,
+.portfolio__item,
+.contact__option {
+    position: relative;
+    overflow: hidden;
+}
+
+.about__card::before,
+.experience__card::before,
+.portfolio__item::before,
+.contact__option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    transition: left 0.6s ease;
+}
+
+.about__card:hover::before,
+.experience__card:hover::before,
+.portfolio__item:hover::before,
+.contact__option:hover::before {
+    left: 100%;
+}
+
+/* Efecto hover suave para todas las tarjetas */
+.about__card:hover,
+.experience__card:hover,
+.portfolio__item:hover,
+.contact__option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Mejora de botones */
+button, .btn {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+button::after, .btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+button:hover::after, .btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Animación de entrada suave para secciones */
+section {
+    opacity: 0;
+    animation: fadeInSection 1s ease-out forwards;
+}
+
+@keyframes fadeInSection {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mejora de iconos */
+.about__icon,
+.experience__icon,
+.contact__icon {
+    transition: all 0.3s ease;
+}
+
+.about__card:hover .about__icon,
+.experience__card:hover .experience__icon,
+.contact__option:hover .contact__icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--color-primary);
+}
+
+/* Efecto glassmorphism sutil */
+.nav,
+.header__socials a,
+.scroll__down {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+
+:root[data-theme="light"] .nav,
+:root[data-theme="light"] .header__socials a {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Mejorar los links con underline animado */
+a:not(.btn):not(.header__socials a) {
+    position: relative;
+    display: inline-block;
+}
+
+a:not(.btn):not(.header__socials a)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+a:not(.btn):not(.header__socials a):hover::after {
+    width: 100%;
+}
+
+/* Mejoras para imágenes */
+img {
+    filter: brightness(0.95);
+    transition: all 0.3s ease;
+}
+
+img:hover {
+    filter: brightness(1);
+    transform: scale(1.02);
+}
+
+/* Sombras más suaves */
+.about__cards,
+.experience__container,
+.portfolio__container {
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.08));
+}
+
+/* Animación para los skill bars */
+.experience__details {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.experience__details::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 4px;
+    height: 0;
+    background: var(--color-primary);
+    transition: height 0.5s ease;
+    transform: translateY(-50%);
+}
+
+.experience__content:hover .experience__details::before {
+    height: 100%;
+}
+
+/* Mejora del scroll */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+}
+
+/* Animación de carga para elementos */
+.about__me,
+.portfolio__item,
+.experience__container > div {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+    animation-delay: 0.1s;
+}
+
+.about__cards > *:nth-child(1) { animation-delay: 0.1s; }
+.about__cards > *:nth-child(2) { animation-delay: 0.2s; }
+.about__cards > *:nth-child(3) { animation-delay: 0.3s; }
+
+.portfolio__container > *:nth-child(1) { animation-delay: 0.1s; }
+.portfolio__container > *:nth-child(2) { animation-delay: 0.15s; }
+.portfolio__container > *:nth-child(3) { animation-delay: 0.2s; }
+.portfolio__container > *:nth-child(4) { animation-delay: 0.25s; }
+.portfolio__container > *:nth-child(5) { animation-delay: 0.3s; }
+.portfolio__container > *:nth-child(6) { animation-delay: 0.35s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mejorar formulario de contacto */
+input,
+textarea {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: var(--color-primary) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="light"] input,
+:root[data-theme="light"] textarea {
+    background: rgba(0, 0, 0, 0.02) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+:root[data-theme="light"] input:focus,
+:root[data-theme="light"] textarea:focus {
+    background: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Cursor personalizado para elementos interactivos */
+.btn,
+button,
+a,
+.portfolio__item,
+.about__card,
+.experience__card {
+    cursor: pointer;
+}
+
+/* Mejoras responsive */
+@media (max-width: 768px) {
+    section {
+        animation-delay: 0s;
+    }
+
+    img:hover {
+        transform: none;
+    }
+
+    .about__card:hover,
+    .experience__card:hover,
+    .portfolio__item:hover {
+        transform: translateY(-3px);
+    }
+}
+
+/* Indicador de scroll suave */
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    z-index: 10000;
+    transition: width 0.3s ease;
+}
+
+/* Loading skeleton para imágenes */
+.loading-skeleton {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.05) 25%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Efecto de parallax suave */
+.header__bg,
+.me {
+    will-change: transform;
+}
+
+/* Mejora de la tipografía */
+h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Micro-animaciones para iconos de redes sociales */
+.header__socials a,
+.footer__socials a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header__socials a:hover,
+.footer__socials a:hover {
+    transform: translateY(-3px) scale(1.1);
+}
+
+/* Efecto de hover para nav items */
+.nav__list a {
+    position: relative;
+}
+
+.nav__list a::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav__list a:hover::before,
+.nav__list a.active::before {
+    width: 100%;
+}

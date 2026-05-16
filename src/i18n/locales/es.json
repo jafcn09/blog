@@ -132,10 +132,12 @@
           "technologies": ["Flutter", "Firebase", "Node.js", "MongoDB", "PostgreSQL"]
       },
       {
-        "title": "Serious Game Educativo",
-        "description": "Juego educativo interactivo para aprendizaje",
-        "fullDescription": "Plataforma de juego serio para educación gamificada con desafíos, progreso, puntuación y análisis de aprendizaje para estudiantes.",
-        "technologies": ["Angular", "MySQL", "Kotlin", "WebSocket", "Golang", "Redis", "Python", "TensorFlow"]
+        "title": "Serious Game USIL - Multiplataforma",
+        "description": "Juego educativo multiplataforma (Web y Android)",
+        "fullDescription": "Plataforma de juego serio educativo desarrollado para la Universidad San Ignacio de Loyola. Sistema multiplataforma con versión web y aplicación móvil Android. Incluye gamificación avanzada, sistema de niveles, logros, análisis de progreso educativo y aprendizaje adaptativo. Disponible tanto en navegador web como en Google Play Store.",
+        "technologies": ["PHP", "Golang", "Python", "Kotlin", "MySQL", "WebSocket", "Redis", "TensorFlow"],
+        "webLink": "https://serious-game.42web.io/main/views/index.php",
+        "playStoreLink": "https://play.google.com/store/apps/details?id=com.usil.jhafet.seriousgame2024&hl=es"
       }
     ]
   },

@@ -3,12 +3,15 @@ import './contact.css'
 import emailjs from 'emailjs-com'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
+import { useSkeletonLoader } from '../../hooks/useSkeletonLoader'
+import SkeletonLoader from '../common/SkeletonLoader'
 
 const Contact = () => {
   const { t } = useTranslation()
   const form = useRef()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errors, setErrors] = useState({})
+  const { ref, isLoading } = useSkeletonLoader(800)
 
   const validateForm = () => {
     const newErrors = {}
@@ -65,46 +68,56 @@ const Contact = () => {
   }
 
   return (
-    <section id='contact' className='contact'>
+    <section id='contact' className='contact' ref={ref}>
       <h2>{t('contact.title')}</h2>
       <p className='contact__description'>{t('contact.description')}</p>
 
       <div className='container contact__container'>
-        <form ref={form} className='contact__form' onSubmit={sendEmail}>
-          <input
-            type='text'
-            name='name'
-            placeholder={t('contact.form.name')}
-            required
-            disabled={isSubmitting}
-          />
-          <input
-            type='email'
-            name='u_email'
-            placeholder={t('contact.form.email')}
-            required
-            disabled={isSubmitting}
-          />
-          <input
-            type='text'
-            name='subject'
-            placeholder={t('contact.form.subject')}
-            required
-            disabled={isSubmitting}
-          />
-          <textarea
-            name='message'
-            rows='7'
-            placeholder={t('contact.form.message')}
-            required
-            minLength='20'
-            maxLength='500'
-            disabled={isSubmitting}
-          ></textarea>
-          <button type='submit' className='btn btn-primary' disabled={isSubmitting}>
-            {isSubmitting ? 'Enviando...' : t('contact.form.submit')}
-          </button>
-        </form>
+        {isLoading ? (
+          <div className='contact__form'>
+            <SkeletonLoader variant="text" height="50px" />
+            <SkeletonLoader variant="text" height="50px" />
+            <SkeletonLoader variant="text" height="50px" />
+            <SkeletonLoader variant="paragraph" height="150px" />
+            <SkeletonLoader variant="button" width="150px" height="45px" />
+          </div>
+        ) : (
+          <form ref={form} className='contact__form animate-fade-in-up' onSubmit={sendEmail}>
+            <input
+              type='text'
+              name='name'
+              placeholder={t('contact.form.name')}
+              required
+              disabled={isSubmitting}
+            />
+            <input
+              type='email'
+              name='u_email'
+              placeholder={t('contact.form.email')}
+              required
+              disabled={isSubmitting}
+            />
+            <input
+              type='text'
+              name='subject'
+              placeholder={t('contact.form.subject')}
+              required
+              disabled={isSubmitting}
+            />
+            <textarea
+              name='message'
+              rows='7'
+              placeholder={t('contact.form.message')}
+              required
+              minLength='20'
+              maxLength='500'
+              disabled={isSubmitting}
+            ></textarea>
+            <button type='submit' className='btn btn-primary' disabled={isSubmitting}>
+              {isSubmitting ? 'Enviando...' : t('contact.form.submit')}
+            </button>
+          </form>
+        )}
       </div>
     </section>
   )
