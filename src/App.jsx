@@ -10,9 +10,12 @@ import Portfolio from './components/portfolio/Portfolio'
 import Conferences from './components/conferences/Conferences'
 import Contact from './components/contact/Contact'
 import Footer from './components/footer/Footer'
+import { useScrollReveal } from './hooks/useScrollReveal'
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true)
+
+  useScrollReveal(!isLoading)
 
   useEffect(() => {
 

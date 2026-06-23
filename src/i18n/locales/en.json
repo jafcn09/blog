@@ -137,6 +137,12 @@
         "technologies": ["PHP", "Golang", "Python", "Kotlin", "MySQL", "WebSocket", "Redis", "TensorFlow"],
         "webLink": "https://serious-game.42web.io/main/views/index.php",
         "playStoreLink": "https://play.google.com/store/apps/details?id=com.usil.jhafet.seriousgame2024&hl=es"
+      },
+      {
+        "title": "Peru Spatial Utils",
+        "description": "Geospatial utilities library for Peru",
+        "fullDescription": "Open-source geospatial utilities for working with Peru's territorial data: departments, provinces and districts. Provides helpers for spatial lookups, boundary resolution and coordinate validation, published as a ready-to-use web tool.",
+        "technologies": ["JavaScript", "GeoJSON", "Leaflet", "GitHub Pages"]
       }
     ]
   },

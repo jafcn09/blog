@@ -7,7 +7,7 @@ const CTA = () => {
   return (
     <div className='cta'>
         <a
-          href="https://wa.me/+51992290742"
+          href="https://wa.me/+51967342317"
           target="_blank"
           rel="noopener noreferrer"
           className='btn btn-primary'

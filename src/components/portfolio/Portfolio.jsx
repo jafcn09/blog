@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 import { FaCode, FaExternalLinkAlt } from 'react-icons/fa'
 import PortfolioModal from './PortfolioModal'
-import LazyImage from '../common/LazyImage'
 import SkeletonLoader from '../common/SkeletonLoader'
 
 import VIDEOTRANSCRIBE from '../../assets/videotranscribe.jpg'
@@ -22,7 +21,7 @@ import IMG10 from '../../assets/portafolio10.jpg'
 import IMG11 from '../../assets/portafolio11.jpg'
 import IMG12 from '../../assets/portafolio12.jpg'
 import IMG13 from '../../assets/portafolio13.jpg'
-import IMG15 from '../../assets/portafolio15.jpg'
+import IMG15 from '../../assets/peru-spatial.svg'
 import IMG16 from '../../assets/portafolio16.jpg'
 import SERIOUSGAME from '../../assets/seriousgame.jpg'
 
@@ -35,315 +34,96 @@ const Portfolio = React.memo(() => {
   const [touchEnd, setTouchEnd] = useState(null)
   const [selectedTech, setSelectedTech] = useState('All')
   const [isLoading, setIsLoading] = useState(true)
-  const [techIndex, setTechIndex] = useState(0)
   const [previousTech, setPreviousTech] = useState(null)
   const [isFilterTransitioning, setIsFilterTransitioning] = useState(false)
 
-  // Memoize getTechnologies function to prevent recreation on every render
   const getTechnologies = useCallback((index) => {
     const techs = t(`portfolio.projects.${index}.technologies`, { returnObjects: true })
     return Array.isArray(techs) ? techs : Object.values(techs || {})
   }, [t])
 
-  // Extract main technologies only (not all)
-  const allTechnologies = useMemo(() => {
-    // Solo mostrar las tecnologías principales
-    return ['All', 'React', 'Angular', 'Python', 'Node.js', 'Golang', 'NestJS', 'Docker', 'AWS']
-  }, [])
+  const allTechnologies = useMemo(() => (
+    ['All', 'React', 'Angular', 'Python', 'Node.js', 'Golang', 'NestJS', 'Docker', 'AWS']
+  ), [])
 
-  // Memoize projects array to prevent recreation on every render
   const projects = useMemo(() => [
-    {
-      id: 1,
-      title: t('portfolio.projects.0.title'),
-      description: t('portfolio.projects.0.description'),
-      fullDescription: t('portfolio.projects.0.fullDescription'),
-      technologies: getTechnologies(0),
-      image: VIDEOTRANSCRIBE,
-      link: 'https://videotranscribe.untumbes.edu.pe/'
-    },
-    {
-      id: 2,
-      title: t('portfolio.projects.1.title'),
-      description: t('portfolio.projects.1.description'),
-      fullDescription: t('portfolio.projects.1.fullDescription'),
-      technologies: getTechnologies(1),
-      image: PRISMPR,
-      link: 'https://prisms-app.onrender.com/'
-    },
-    {
-      id: 3,
-      title: t('portfolio.projects.2.title'),
-      description: t('portfolio.projects.2.description'),
-      fullDescription: t('portfolio.projects.2.fullDescription'),
-      technologies: getTechnologies(2),
-      image: APPOINTMENTS,
-      link: 'https://sistema-citas.com/'
-    },
-    {
-      id: 4,
-      title: t('portfolio.projects.3.title'),
-      description: t('portfolio.projects.3.description'),
-      fullDescription: t('portfolio.projects.3.fullDescription'),
-      technologies: getTechnologies(3),
-      image: CODERESOLUTIONS,
-      link: 'https://coderesolutions.com/'
-    },
-    {
-      id: 5,
-      title: t('portfolio.projects.4.title'),
-      description: t('portfolio.projects.4.description'),
-      fullDescription: t('portfolio.projects.4.fullDescription'),
-      technologies: getTechnologies(4),
-      image: IMG2,
-      link: 'https://www.rover.com/'
-    },
-    {
-      id: 6,
-      title: t('portfolio.projects.5.title'),
-      description: t('portfolio.projects.5.description'),
-      fullDescription: t('portfolio.projects.5.fullDescription'),
-      technologies: getTechnologies(5),
-      image: IMG3,
-      link: 'https://smiledu.com/'
-    },
-    {
-      id: 7,
-      title: t('portfolio.projects.6.title'),
-      description: t('portfolio.projects.6.description'),
-      fullDescription: t('portfolio.projects.6.fullDescription'),
-      technologies: getTechnologies(6),
-      image: IMG4,
-      link: 'https://rosar.netlify.app/'
-    },
-    {
-      id: 8,
-      title: t('portfolio.projects.7.title'),
-      description: t('portfolio.projects.7.description'),
-      fullDescription: t('portfolio.projects.7.fullDescription'),
-      technologies: getTechnologies(7),
-      image: IMG5,
-      link: 'https://www.clinicaluzdeesperanza.pe/'
-    },
-    {
-      id: 9,
-      title: t('portfolio.projects.8.title'),
-      description: t('portfolio.projects.8.description'),
-      fullDescription: t('portfolio.projects.8.fullDescription'),
-      technologies: getTechnologies(8),
-      image: IMG6,
-      link: 'https://www.munitumbes.gob.pe/web-mpt/'
-    },
-    {
-      id: 10,
-      title: t('portfolio.projects.9.title'),
-      description: t('portfolio.projects.9.description'),
-      fullDescription: t('portfolio.projects.9.fullDescription'),
-      technologies: getTechnologies(9),
-      image: IMG7,
-      link: 'https://servizisolarisrls.com/'
-    },
-    {
-      id: 11,
-      title: t('portfolio.projects.10.title'),
-      description: t('portfolio.projects.10.description'),
-      fullDescription: t('portfolio.projects.10.fullDescription'),
-      technologies: getTechnologies(10),
-      image: IMG9,
-      link: 'https://servizisolarisrls.com/'
-    },
-    {
-      id: 12,
-      title: t('portfolio.projects.11.title'),
-      description: t('portfolio.projects.11.description'),
-      fullDescription: t('portfolio.projects.11.fullDescription'),
-      technologies: getTechnologies(11),
-      image: IMG10,
-      link: 'https://repositorio.untumbes.edu.pe/'
-    },
-    {
-      id: 13,
-      title: t('portfolio.projects.12.title'),
-      description: t('portfolio.projects.12.description'),
-      fullDescription: t('portfolio.projects.12.fullDescription'),
-      technologies: getTechnologies(12),
-      image: IMG11,
-      link: 'https://untumbes.edu.pe/'
-    },
-    {
-      id: 14,
-      title: t('portfolio.projects.13.title'),
-      description: t('portfolio.projects.13.description'),
-      fullDescription: t('portfolio.projects.13.fullDescription'),
-      technologies: getTechnologies(13),
-      image: IMG16,
-      link: 'https://tramite-documentario.pages.dev/'
-    },
-    {
-      id: 15,
-      title: t('portfolio.projects.14.title'),
-      description: t('portfolio.projects.14.description'),
-      fullDescription: t('portfolio.projects.14.fullDescription'),
-      technologies: getTechnologies(14),
-      image: IMG12,
-      link: 'https://cybertesis.unmsm.edu.pe/'
-    },
-    {
-      id: 16,
-      title: t('portfolio.projects.15.title'),
-      description: t('portfolio.projects.15.description'),
-      fullDescription: t('portfolio.projects.15.fullDescription'),
-      technologies: getTechnologies(15),
-      image: IMG13,
-      link: 'https://play.google.com/store/search?q=app%20usil&c=apps&hl=es_PE'
-    },
-    {
-      id: 17,
-      title: t('portfolio.projects.16.title'),
-      description: t('portfolio.projects.16.description'),
-      fullDescription: t('portfolio.projects.16.fullDescription'),
-      technologies: getTechnologies(16),
-      image: SERIOUSGAME,
-      webLink: t('portfolio.projects.16.webLink'),
-      playStoreLink: t('portfolio.projects.16.playStoreLink'),
-      link: 'https://serious-game.42web.io/main/views/index.php'
-    }
+    { id: 1,  image: VIDEOTRANSCRIBE, link: 'https://videotranscribe.untumbes.edu.pe/', title: t('portfolio.projects.0.title'),  description: t('portfolio.projects.0.description'),  fullDescription: t('portfolio.projects.0.fullDescription'),  technologies: getTechnologies(0) },
+    { id: 2,  image: PRISMPR,         link: 'https://prisms-app.onrender.com/',          title: t('portfolio.projects.1.title'),  description: t('portfolio.projects.1.description'),  fullDescription: t('portfolio.projects.1.fullDescription'),  technologies: getTechnologies(1) },
+    { id: 3,  image: APPOINTMENTS,    link: 'https://sistema-citas.com/',                 title: t('portfolio.projects.2.title'),  description: t('portfolio.projects.2.description'),  fullDescription: t('portfolio.projects.2.fullDescription'),  technologies: getTechnologies(2) },
+    { id: 4,  image: CODERESOLUTIONS, link: 'https://coderesolutions.com/',               title: t('portfolio.projects.3.title'),  description: t('portfolio.projects.3.description'),  fullDescription: t('portfolio.projects.3.fullDescription'),  technologies: getTechnologies(3) },
+    { id: 5,  image: IMG2,            link: 'https://www.rover.com/',                     title: t('portfolio.projects.4.title'),  description: t('portfolio.projects.4.description'),  fullDescription: t('portfolio.projects.4.fullDescription'),  technologies: getTechnologies(4) },
+    { id: 6,  image: IMG3,            link: 'https://smiledu.com/',                       title: t('portfolio.projects.5.title'),  description: t('portfolio.projects.5.description'),  fullDescription: t('portfolio.projects.5.fullDescription'),  technologies: getTechnologies(5) },
+    { id: 7,  image: IMG4,            link: 'https://rosar.netlify.app/',                 title: t('portfolio.projects.6.title'),  description: t('portfolio.projects.6.description'),  fullDescription: t('portfolio.projects.6.fullDescription'),  technologies: getTechnologies(6) },
+    { id: 8,  image: IMG5,            link: 'https://www.clinicaluzdeesperanza.pe/',      title: t('portfolio.projects.7.title'),  description: t('portfolio.projects.7.description'),  fullDescription: t('portfolio.projects.7.fullDescription'),  technologies: getTechnologies(7) },
+    { id: 9,  image: IMG6,            link: 'https://www.munitumbes.gob.pe/web-mpt/',    title: t('portfolio.projects.8.title'),  description: t('portfolio.projects.8.description'),  fullDescription: t('portfolio.projects.8.fullDescription'),  technologies: getTechnologies(8) },
+    { id: 10, image: IMG7,            link: 'https://servizisolarisrls.com/',             title: t('portfolio.projects.9.title'),  description: t('portfolio.projects.9.description'),  fullDescription: t('portfolio.projects.9.fullDescription'),  technologies: getTechnologies(9) },
+    { id: 11, image: IMG9,            link: 'https://servizisolarisrls.com/',             title: t('portfolio.projects.10.title'), description: t('portfolio.projects.10.description'), fullDescription: t('portfolio.projects.10.fullDescription'), technologies: getTechnologies(10) },
+    { id: 12, image: IMG10,           link: 'https://repositorio.untumbes.edu.pe/',       title: t('portfolio.projects.11.title'), description: t('portfolio.projects.11.description'), fullDescription: t('portfolio.projects.11.fullDescription'), technologies: getTechnologies(11) },
+    { id: 13, image: IMG11,           link: 'https://untumbes.edu.pe/',                   title: t('portfolio.projects.12.title'), description: t('portfolio.projects.12.description'), fullDescription: t('portfolio.projects.12.fullDescription'), technologies: getTechnologies(12) },
+    { id: 14, image: IMG16,           link: 'https://tramite-documentario.pages.dev/',   title: t('portfolio.projects.13.title'), description: t('portfolio.projects.13.description'), fullDescription: t('portfolio.projects.13.fullDescription'), technologies: getTechnologies(13) },
+    { id: 15, image: IMG12,           link: 'https://cybertesis.unmsm.edu.pe/',           title: t('portfolio.projects.14.title'), description: t('portfolio.projects.14.description'), fullDescription: t('portfolio.projects.14.fullDescription'), technologies: getTechnologies(14) },
+    { id: 16, image: IMG13,           link: 'https://play.google.com/store/search?q=app%20usil&c=apps&hl=es_PE', title: t('portfolio.projects.15.title'), description: t('portfolio.projects.15.description'), fullDescription: t('portfolio.projects.15.fullDescription'), technologies: getTechnologies(15) },
+    { id: 17, image: SERIOUSGAME,     link: 'https://serious-game.42web.io/main/views/index.php', title: t('portfolio.projects.16.title'), description: t('portfolio.projects.16.description'), fullDescription: t('portfolio.projects.16.fullDescription'), technologies: getTechnologies(16), webLink: t('portfolio.projects.16.webLink'), playStoreLink: t('portfolio.projects.16.playStoreLink') },
+    { id: 18, image: IMG15,           link: 'https://jafcn09.github.io/peru-spatial-utils/', title: t('portfolio.projects.17.title'), description: t('portfolio.projects.17.description'), fullDescription: t('portfolio.projects.17.fullDescription'), technologies: getTechnologies(17) }
   ], [t, getTechnologies])
 
-  // Filter projects based on selected technology
-  const filteredProjects = useMemo(() => {
-    if (selectedTech === 'All') return projects
-    return projects.filter(project =>
-      project.technologies.some(tech => tech === selectedTech)
-    )
-  }, [projects, selectedTech])
+  const filteredProjects = useMemo(() => (
+    selectedTech === 'All' ? projects : projects.filter(p => p.technologies.some(tech => tech === selectedTech))
+  ), [projects, selectedTech])
 
-  // Reset currentIndex when filter changes with transition effect
   useEffect(() => {
     setIsFilterTransitioning(true)
     setCurrentIndex(0)
-
-    // Reset transition state after animation
-    const timer = setTimeout(() => {
-      setIsFilterTransitioning(false)
-    }, 600)
-
+    const timer = setTimeout(() => setIsFilterTransitioning(false), 500)
     return () => clearTimeout(timer)
   }, [selectedTech])
 
-  const handleNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % filteredProjects.length)
-  }, [filteredProjects.length])
+  const handleNext = useCallback(() => setCurrentIndex(p => (p + 1) % filteredProjects.length), [filteredProjects.length])
+  const handlePrev = useCallback(() => setCurrentIndex(p => (p - 1 + filteredProjects.length) % filteredProjects.length), [filteredProjects.length])
 
-  const handlePrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length)
-  }, [filteredProjects.length])
-
-  // Memoize handleIndicatorClick to prevent recreation on every render
-  const handleIndicatorClick = useCallback((index) => {
-    setCurrentIndex(index)
-    setIsAutoPlaying(false)
-    setTimeout(() => setIsAutoPlaying(true), 8000)
-  }, [])
-
-  // Memoize pauseAutoplay function to prevent recreation on every render
   const pauseAutoplay = useCallback(() => {
     setIsAutoPlaying(false)
     setTimeout(() => setIsAutoPlaying(true), 8000)
   }, [])
 
-  // Memoize touch handlers for mobile swipe to prevent recreation on every render
-  const handleTouchStart = useCallback((e) => {
-    setTouchEnd(null)
-    setTouchStart(e.targetTouches[0].clientX)
-  }, [])
-
-  const handleTouchMove = useCallback((e) => {
-    setTouchEnd(e.targetTouches[0].clientX)
-  }, [])
-
-  const handleTouchEnd = useCallback(() => {
+  const handleTouchStart = useCallback((e) => { setTouchEnd(null); setTouchStart(e.targetTouches[0].clientX) }, [])
+  const handleTouchMove  = useCallback((e) => setTouchEnd(e.targetTouches[0].clientX), [])
+  const handleTouchEnd   = useCallback(() => {
     if (!touchStart || !touchEnd) return
-    const distance = touchStart - touchEnd
-    const minSwipeDistance = 50
-    if (Math.abs(distance) > minSwipeDistance) {
-      if (distance > 0) {
-        handleNext()
-      } else {
-        handlePrev()
-      }
-      pauseAutoplay()
-    }
+    const dist = touchStart - touchEnd
+    if (Math.abs(dist) > 50) { dist > 0 ? handleNext() : handlePrev(); pauseAutoplay() }
   }, [touchStart, touchEnd, handleNext, handlePrev, pauseAutoplay])
 
-  // Memoize modal close handler to prevent recreation on every render
-  const handleCloseModal = useCallback(() => setSelectedProject(null), [])
-
-  // Memoize project selection handler to prevent recreation on every render
-  const handleProjectSelect = useCallback((project) => setSelectedProject(project), [])
-
-  // Memoize technology selection handler to prevent recreation on every render
   const handleTechSelect = useCallback((tech) => {
     setPreviousTech(selectedTech)
     setSelectedTech(tech)
-    setTechIndex(allTechnologies.indexOf(tech))
+    setTimeout(() => setPreviousTech(null), 600)
+  }, [selectedTech])
 
-    // Limpiar la clase fading-out después de 800ms
-    setTimeout(() => {
-      setPreviousTech(null)
-    }, 800)
-  }, [allTechnologies, selectedTech])
-
-  // Autoplay for projects
   useEffect(() => {
     if (!isAutoPlaying) return
-    const interval = setInterval(handleNext, 4000)
+    const interval = setInterval(handleNext, 4500)
     return () => clearInterval(interval)
   }, [isAutoPlaying, handleNext])
 
-  // Autoplay for technology filters
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTechIndex(prev => {
-        const nextIndex = (prev + 1) % allTechnologies.length
-        setPreviousTech(selectedTech)
-        setSelectedTech(allTechnologies[nextIndex])
-
-        // Limpiar la clase fading-out después de 800ms
-        setTimeout(() => {
-          setPreviousTech(null)
-        }, 800)
-
-        return nextIndex
-      })
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [allTechnologies, selectedTech])
-
-  // Simulate loading delay
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1500)
+    const timer = setTimeout(() => setIsLoading(false), 800)
     return () => clearTimeout(timer)
   }, [])
+
+  const pad = (n) => String(n).padStart(2, '0')
 
   return (
     <section id='portfolio' className='portfolio'>
       <h2>{t('portfolio.title')}</h2>
 
-      {/* Technology Filter Bar */}
       <div className='portfolio__filter'>
         <div className='portfolio__filter-container'>
           {allTechnologies.map((tech) => (
             <button
               key={tech}
-              className={`portfolio__filter-btn ${
-                selectedTech === tech ? 'active' : ''
-              } ${
-                previousTech === tech ? 'fading-out' : ''
-              }`}
-              onClick={() => handleTechSelect(tech)}
+              className={`portfolio__filter-btn${selectedTech === tech ? ' active' : ''}${previousTech === tech ? ' fading-out' : ''}`}
+              onClick={() => { handleTechSelect(tech); pauseAutoplay() }}
             >
               {tech === 'All' ? t('portfolio.filter_all') : tech}
             </button>
@@ -352,11 +132,7 @@ const Portfolio = React.memo(() => {
       </div>
 
       <div className='container portfolio__wrapper'>
-        <button
-          className='portfolio__btn portfolio__btn--prev'
-          onClick={() => { handlePrev(); pauseAutoplay() }}
-          title='Previous'
-        >
+        <button className='portfolio__btn' onClick={() => { handlePrev(); pauseAutoplay() }} title='Anterior'>
           <MdChevronLeft />
         </button>
 
@@ -369,72 +145,61 @@ const Portfolio = React.memo(() => {
           {isLoading ? (
             <div className='portfolio__slides'>
               <div className='portfolio__slide'>
-                <div className='portfolio__card'>
-                  <div className='portfolio__image-container'>
-                    <SkeletonLoader variant="image" height="400px" />
-                  </div>
-                  <div className='portfolio__content' style={{padding: '1.5rem'}}>
-                    <SkeletonLoader variant="title" width="80%" />
-                    <div style={{marginTop: '1rem'}}>
-                      <SkeletonLoader variant="text" count={2} />
-                    </div>
-                    <div className='portfolio__technologies' style={{marginTop: '1rem'}}>
-                      <SkeletonLoader variant="button" width="80px" />
-                      <SkeletonLoader variant="button" width="60px" />
-                      <SkeletonLoader variant="button" width="70px" />
-                    </div>
-                  </div>
+                <div className='portfolio__card portfolio__card--skeleton'>
+                  <SkeletonLoader variant="image" height="440px" />
                 </div>
               </div>
             </div>
           ) : (
             <div
-              className={`portfolio__slides ${isFilterTransitioning ? 'filtering' : ''}`}
+              className={`portfolio__slides${isFilterTransitioning ? ' filtering' : ''}`}
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {filteredProjects.map((project, index) => (
                 <div
                   key={project.id}
-                  className={`portfolio__slide ${isFilterTransitioning ? 'slide-entering' : ''}`}
-                  style={{
-                    animationDelay: isFilterTransitioning ? `${index * 100}ms` : '0ms'
-                  }}
+                  className={`portfolio__slide${isFilterTransitioning ? ' slide-entering' : ''}`}
+                  style={{ animationDelay: isFilterTransitioning ? `${index * 80}ms` : '0ms' }}
                 >
-                  <div
-                    className='portfolio__card'
-                    onClick={() => handleProjectSelect(project)}
-                  >
-                    <div className='portfolio__image-container'>
-                      <LazyImage
-                        src={project.image}
-                        alt={project.title}
-                        className="portfolio__image"
-                        effect="blur"
-                        threshold={50}
-                        wrapperClassName="portfolio__lazy-wrapper"
-                      />
-                      <div className='portfolio__year-badge'>
-                        <FaCode />
-                        <span>Proyecto</span>
-                      </div>
+                  <div className='portfolio__card' onClick={() => setSelectedProject(project)}>
+                    <img src={project.image} alt={project.title} className='portfolio__bg-img' />
+                    <div className='portfolio__overlay'></div>
+                    <div className='portfolio__badge'>
+                      <FaCode />
+                      <span>Proyecto</span>
                     </div>
+                    <span className='portfolio__counter'>
+                      {pad(currentIndex + 1)}&thinsp;/&thinsp;{pad(filteredProjects.length)}
+                    </span>
                     <div className='portfolio__content'>
                       <h3 className='portfolio__title'>{project.title}</h3>
                       <p className='portfolio__subtitle'>{project.description}</p>
-                      <div className='portfolio__details'>
-                        <div className='portfolio__detail'>
-                          <FaCode />
-                          <span>{project.technologies.slice(0, 2).join(', ')}</span>
-                        </div>
-                        <div className='portfolio__detail'>
-                          <FaExternalLinkAlt />
-                          <span>{t('portfolio.website')}</span>
-                        </div>
+                      <div className='portfolio__tech-tags'>
+                        {project.technologies.slice(0, 4).map((tech) => (
+                          <span key={tech} className='portfolio__tech-tag'>{tech}</span>
+                        ))}
+                        {project.technologies.length > 4 && (
+                          <span className='portfolio__tech-tag portfolio__tech-more'>
+                            +{project.technologies.length - 4}
+                          </span>
+                        )}
                       </div>
-                      <button className='portfolio__view-btn'>
-                        <FaCode />
-                        <span>Ver Detalles</span>
-                      </button>
+                      <div className='portfolio__actions'>
+                        <button className='portfolio__view-btn'>
+                          <FaCode />
+                          <span>Ver Detalles</span>
+                        </button>
+                        <a
+                          href={project.link}
+                          target='_blank'
+                          rel='noreferrer'
+                          className='portfolio__ext-link'
+                          onClick={(e) => e.stopPropagation()}
+                          title='Ver sitio'
+                        >
+                          <FaExternalLinkAlt />
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -443,11 +208,7 @@ const Portfolio = React.memo(() => {
           )}
         </div>
 
-        <button
-          className='portfolio__btn portfolio__btn--next'
-          onClick={() => { handleNext(); pauseAutoplay() }}
-          title='Next'
-        >
+        <button className='portfolio__btn' onClick={() => { handleNext(); pauseAutoplay() }} title='Siguiente'>
           <MdChevronRight />
         </button>
       </div>
@@ -456,9 +217,8 @@ const Portfolio = React.memo(() => {
         {filteredProjects.map((_, index) => (
           <button
             key={index}
-            className={`portfolio__indicator ${currentIndex === index ? 'active' : ''}`}
-            onClick={() => handleIndicatorClick(index)}
-            title={`Slide ${index + 1}`}
+            className={`portfolio__indicator${currentIndex === index ? ' active' : ''}`}
+            onClick={() => { setCurrentIndex(index); pauseAutoplay() }}
           />
         ))}
       </div>
@@ -466,20 +226,14 @@ const Portfolio = React.memo(() => {
       <div className='portfolio__progress'>
         <div
           className='portfolio__progress-bar'
-          style={{
-            width: `${((currentIndex + 1) / filteredProjects.length) * 100}%`
-          }}
+          style={{ width: `${((currentIndex + 1) / filteredProjects.length) * 100}%` }}
         />
       </div>
 
-      <PortfolioModal
-        project={selectedProject}
-        onClose={handleCloseModal}
-      />
+      <PortfolioModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </section>
   )
 })
 
 Portfolio.displayName = 'Portfolio'
-
 export default Portfolio

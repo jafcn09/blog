@@ -12,7 +12,11 @@ const Header = () => {
   return (
     <header id="header">
       <HeaderControls/>
-      <div className="header__bg"></div>
+      <div className="header__bg">
+        <div className="header__orb header__orb--1"></div>
+        <div className="header__orb header__orb--2"></div>
+        <div className="header__orb header__orb--3"></div>
+      </div>
       <div className="container header__container">
         <div className="header__content">
           <h5 className="header__greeting">{t('header.greeting')}</h5>
@@ -24,7 +28,10 @@ const Header = () => {
         </div>
 
         <div className="me">
-          <img unselectable='on' src={ME} alt="me" />
+          <div className="me__glow"></div>
+          <div className="me__photo">
+            <img unselectable='on' src={ME} alt="me" />
+          </div>
         </div>
 
         <a href="#about" className='scroll__down'>

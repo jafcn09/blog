@@ -5,6 +5,36 @@ import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
 import { useSkeletonLoader } from '../../hooks/useSkeletonLoader'
 import SkeletonLoader from '../common/SkeletonLoader'
+import { MdOutlineEmail, MdArrowForward } from 'react-icons/md'
+import { BsLinkedin, BsGithub } from 'react-icons/bs'
+import { BiCode } from 'react-icons/bi'
+
+const CONTACT_OPTIONS = [
+  {
+    icon: <MdOutlineEmail />,
+    label: 'Email',
+    href: 'mailto:jafetcanepamaceda05@gmail.com',
+    action: 'Enviar mensaje'
+  },
+  {
+    icon: <BsLinkedin />,
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/jafetcanepa/',
+    action: 'Ver perfil'
+  },
+  {
+    icon: <BsGithub />,
+    label: 'GitHub',
+    href: 'https://github.com/jafcn09',
+    action: 'Ver proyectos'
+  },
+  {
+    icon: <BiCode />,
+    label: 'CodeResolutions',
+    href: 'https://coderesolutions.com/home',
+    action: 'Visitar empresa'
+  }
+]
 
 const Contact = () => {
   const { t } = useTranslation()
@@ -15,12 +45,12 @@ const Contact = () => {
 
   const validateForm = () => {
     const newErrors = {}
-    const name = form.current.name.value.trim()
-    const email = form.current.u_email.value.trim()
+    const name    = form.current.name.value.trim()
+    const email   = form.current.u_email.value.trim()
     const subject = form.current.subject.value.trim()
     const message = form.current.message.value.trim()
 
-    if (!name) newErrors.name = 'El nombre es requerido'
+    if (!name)    newErrors.name    = 'El nombre es requerido'
     if (!email) {
       newErrors.email = 'El correo es requerido'
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -35,34 +65,23 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault()
-
     const newErrors = validateForm()
     setErrors(newErrors)
 
     if (Object.keys(newErrors).length > 0) {
-      toast.error('Por favor completa todos los campos correctamente', {
-        position: 'bottom-right',
-        autoClose: 3000
-      })
+      toast.error('Por favor completa todos los campos correctamente', { position: 'bottom-right', autoClose: 3000 })
       return
     }
 
     setIsSubmitting(true)
-
     emailjs.sendForm('service_sm81xv4', 'template_dwcwncb', form.current, 'ER0xYYiOmOi6ykGwA')
-      .then((result) => {
-        toast.success('¡Mensaje enviado correctamente!', {
-          position: 'bottom-right',
-          autoClose: 3000
-        })
+      .then(() => {
+        toast.success('¡Mensaje enviado correctamente!', { position: 'bottom-right', autoClose: 3000 })
         form.current.reset()
         setErrors({})
         setIsSubmitting(false)
-      }, (error) => {
-        toast.error('Error al enviar el mensaje. Intenta de nuevo.', {
-          position: 'bottom-right',
-          autoClose: 3000
-        })
+      }, () => {
+        toast.error('Error al enviar el mensaje. Intenta de nuevo.', { position: 'bottom-right', autoClose: 3000 })
         setIsSubmitting(false)
       })
   }
@@ -82,41 +101,70 @@ const Contact = () => {
             <SkeletonLoader variant="button" width="150px" height="45px" />
           </div>
         ) : (
-          <form ref={form} className='contact__form animate-fade-in-up' onSubmit={sendEmail}>
-            <input
-              type='text'
-              name='name'
-              placeholder={t('contact.form.name')}
-              required
-              disabled={isSubmitting}
-            />
-            <input
-              type='email'
-              name='u_email'
-              placeholder={t('contact.form.email')}
-              required
-              disabled={isSubmitting}
-            />
-            <input
-              type='text'
-              name='subject'
-              placeholder={t('contact.form.subject')}
-              required
-              disabled={isSubmitting}
-            />
-            <textarea
-              name='message'
-              rows='7'
-              placeholder={t('contact.form.message')}
-              required
-              minLength='20'
-              maxLength='500'
-              disabled={isSubmitting}
-            ></textarea>
-            <button type='submit' className='btn btn-primary' disabled={isSubmitting}>
-              {isSubmitting ? 'Enviando...' : t('contact.form.submit')}
-            </button>
-          </form>
+          <>
+            <div className='contact__options'>
+              {CONTACT_OPTIONS.map((option) => (
+                <article key={option.label} className='contact__option'>
+                  <div className='contact__option-icon'>{option.icon}</div>
+                  <div className='contact__option-info'>
+                    <h4 className='contact__option-label'>{option.label}</h4>
+                    <a
+                      href={option.href}
+                      target='_blank'
+                      rel='noreferrer'
+                      className='contact__option-link'
+                    >
+                      {option.action} <MdArrowForward />
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <form ref={form} className='contact__form' onSubmit={sendEmail}>
+              <input
+                type='text'
+                name='name'
+                placeholder={t('contact.form.name')}
+                required
+                disabled={isSubmitting}
+              />
+              {errors.name && <p className='contact__form-error'>{errors.name}</p>}
+
+              <input
+                type='email'
+                name='u_email'
+                placeholder={t('contact.form.email')}
+                required
+                disabled={isSubmitting}
+              />
+              {errors.email && <p className='contact__form-error'>{errors.email}</p>}
+
+              <input
+                type='text'
+                name='subject'
+                placeholder={t('contact.form.subject')}
+                required
+                disabled={isSubmitting}
+              />
+              {errors.subject && <p className='contact__form-error'>{errors.subject}</p>}
+
+              <textarea
+                name='message'
+                rows='6'
+                placeholder={t('contact.form.message')}
+                required
+                minLength='20'
+                maxLength='500'
+                disabled={isSubmitting}
+              ></textarea>
+              {errors.message && <p className='contact__form-error'>{errors.message}</p>}
+
+              <button type='submit' className='btn btn-primary' disabled={isSubmitting}>
+                {isSubmitting ? 'Enviando...' : t('contact.form.submit')}
+              </button>
+            </form>
+          </>
         )}
       </div>
     </section>

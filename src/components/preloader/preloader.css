@@ -1,7 +1,6 @@
 .preloader {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100vh;
     background: var(--color-bg);
@@ -9,15 +8,15 @@
     align-items: center;
     justify-content: center;
     z-index: 10000;
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.6s var(--ease);
 }
 
 .preloader.dark {
-    background: #0A0E13;
+    background: #0B0D11;
 }
 
 .preloader.light {
-    background: #FFFFFF;
+    background: #FAFAF8;
 }
 
 .preloader__container {
@@ -29,7 +28,6 @@
     position: relative;
 }
 
-/* Chart Animation Styles */
 .preloader__chart {
     position: relative;
     width: 300px;
@@ -50,84 +48,21 @@
 
 .preloader__bar {
     width: 40px;
-    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    border-radius: 8px 8px 0 0;
-    transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    animation: barPulse 2s ease-in-out infinite;
+    background: var(--color-primary);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: height 1s var(--ease);
+    opacity: 0.85;
 }
-
-.preloader.dark .preloader__bar {
-    background: linear-gradient(180deg, #D4A574 0%, #8B7355 100%);
-    box-shadow: 0 0 20px rgba(212, 165, 116, 0.3);
-}
-
-.preloader.light .preloader__bar {
-    background: linear-gradient(180deg, #4A90E2 0%, #6BB3D1 100%);
-    box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
-}
-
-@keyframes barPulse {
-    0%, 100% {
-        opacity: 0.8;
-        transform: scaleY(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scaleY(1.05);
-    }
-}
-
-.preloader__bar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.3),
-        transparent
-    );
-    animation: shimmerBar 1.5s infinite;
-}
-
-@keyframes shimmerBar {
-    0% {
-        transform: translateY(100%);
-    }
-    100% {
-        transform: translateY(-100%);
-    }
-}
-
-.preloader__bar:nth-child(1) { animation-delay: 0s; }
-.preloader__bar:nth-child(2) { animation-delay: 0.1s; }
-.preloader__bar:nth-child(3) { animation-delay: 0.2s; }
-.preloader__bar:nth-child(4) { animation-delay: 0.3s; }
-.preloader__bar:nth-child(5) { animation-delay: 0.4s; }
 
 .preloader__chart-line {
     position: absolute;
     bottom: 0;
     left: -20px;
     right: -20px;
-    height: 2px;
-    background: currentColor;
-    opacity: 0.2;
+    height: 1px;
+    background: var(--color-border-strong);
 }
 
-.preloader.dark .preloader__chart-line {
-    background: #D4A574;
-}
-
-.preloader.light .preloader__chart-line {
-    background: #4A90E2;
-}
-
-/* Loading Info */
 .preloader__info {
     display: flex;
     flex-direction: column;
@@ -136,29 +71,13 @@
 }
 
 .preloader__percentage {
+    font-family: var(--font-display);
     font-size: 4rem;
     font-weight: 700;
     color: var(--color-primary);
     display: flex;
     align-items: baseline;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.preloader.dark .preloader__percentage {
-    background: linear-gradient(135deg, #D4A574, #8B7355);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.preloader.light .preloader__percentage {
-    background: linear-gradient(135deg, #4A90E2, #6BB3D1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    letter-spacing: -0.03em;
 }
 
 .preloader__percent-symbol {
@@ -167,22 +86,15 @@
 }
 
 .preloader__loading-text {
-    font-size: 1.2rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-text-secondary);
     display: flex;
     align-items: center;
     gap: 0.25rem;
-}
-
-.preloader.dark .preloader__loading-text {
-    color: rgba(212, 165, 116, 0.8);
-}
-
-.preloader.light .preloader__loading-text {
-    color: rgba(85, 107, 130, 0.8);
 }
 
 .preloader__dots-animate {
@@ -191,7 +103,7 @@
 }
 
 .preloader__dots-animate span {
-    animation: dotBounce 1.4s ease-in-out infinite;
+    animation: dotBounce 1.4s var(--ease) infinite;
 }
 
 .preloader__dots-animate span:nth-child(1) { animation-delay: 0s; }
@@ -209,142 +121,30 @@
     }
 }
 
-/* Welcome Message */
 .preloader__welcome {
-    animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    animation: scaleIn 0.7s var(--ease) forwards;
 }
 
 .preloader__welcome-text {
-    font-size: 5rem;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 700;
     margin: 0;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 0.05em;
-    animation: welcomePulse 2s ease-in-out infinite;
-}
-
-.preloader.dark .preloader__welcome-text {
-    background: linear-gradient(135deg, #D4A574, #8B7355);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.preloader.light .preloader__welcome-text {
-    background: linear-gradient(135deg, #4A90E2, #6BB3D1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-@keyframes welcomePulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.9;
-    }
-    50% {
-        transform: scale(1.05);
-        opacity: 1;
-    }
+    color: var(--color-primary);
+    letter-spacing: -0.03em;
 }
 
 .preloader__welcome-subtitle {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-top: 1rem;
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 0.75rem;
     color: var(--color-text-secondary);
-    letter-spacing: 0.2em;
+    letter-spacing: 0.16em;
     opacity: 0;
-    animation: fadeInUp 0.6s ease-out 0.4s forwards;
+    animation: fadeInUp 0.6s var(--ease) 0.3s forwards;
 }
 
-.preloader.dark .preloader__welcome-subtitle {
-    color: rgba(212, 165, 116, 0.7);
-}
-
-.preloader.light .preloader__welcome-subtitle {
-    color: rgba(85, 107, 130, 0.7);
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Background Effects */
-.preloader::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(
-        circle at 30% 50%,
-        rgba(139, 115, 85, 0.05),
-        transparent 50%
-    );
-    animation: float 15s ease-in-out infinite;
-    pointer-events: none;
-}
-
-.preloader.light::before {
-    background: radial-gradient(
-        circle at 30% 50%,
-        rgba(74, 144, 226, 0.05),
-        transparent 50%
-    );
-}
-
-.preloader::after {
-    content: '';
-    position: absolute;
-    bottom: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(
-        circle at 70% 50%,
-        rgba(107, 179, 209, 0.05),
-        transparent 50%
-    );
-    animation: float 15s ease-in-out infinite reverse;
-    pointer-events: none;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    33% {
-        transform: translate(30px, -30px) rotate(120deg);
-    }
-    66% {
-        transform: translate(-20px, 20px) rotate(240deg);
-    }
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
     .preloader__chart {
         width: 250px;
@@ -366,18 +166,6 @@
     .preloader__percent-symbol {
         font-size: 1.5rem;
     }
-
-    .preloader__loading-text {
-        font-size: 1rem;
-    }
-
-    .preloader__welcome-text {
-        font-size: 3.5rem;
-    }
-
-    .preloader__welcome-subtitle {
-        font-size: 1.5rem;
-    }
 }
 
 @media (max-width: 480px) {
@@ -396,13 +184,5 @@
 
     .preloader__percentage {
         font-size: 2.5rem;
-    }
-
-    .preloader__welcome-text {
-        font-size: 2.5rem;
-    }
-
-    .preloader__welcome-subtitle {
-        font-size: 1.2rem;
     }
 }

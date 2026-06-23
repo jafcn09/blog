@@ -138,6 +138,12 @@
         "technologies": ["PHP", "Golang", "Python", "Kotlin", "MySQL", "WebSocket", "Redis", "TensorFlow"],
         "webLink": "https://serious-game.42web.io/main/views/index.php",
         "playStoreLink": "https://play.google.com/store/apps/details?id=com.usil.jhafet.seriousgame2024&hl=es"
+      },
+      {
+        "title": "Peru Spatial Utils",
+        "description": "Librería de utilidades geoespaciales para Perú",
+        "fullDescription": "Utilidades geoespaciales de código abierto para trabajar con datos territoriales de Perú: departamentos, provincias y distritos. Ofrece funciones para consultas espaciales, resolución de límites y validación de coordenadas, publicada como herramienta web lista para usar.",
+        "technologies": ["JavaScript", "GeoJSON", "Leaflet", "GitHub Pages"]
       }
     ]
   },

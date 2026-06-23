@@ -22,118 +22,34 @@ const Conferences = () => {
   const [selectedConference, setSelectedConference] = useState(null)
 
   const conferences = [
-    {
-      id: 1,
-      image: CONF1,
-      title: t('conferences.items.0.title'),
-      subtitle: t('conferences.items.0.subtitle'),
-      role: t('conferences.items.0.role'),
-      organizer: t('conferences.items.0.organizer'),
-      year: '2024'
-    },
-    {
-      id: 2,
-      image: CONF2,
-      title: t('conferences.items.1.title'),
-      subtitle: t('conferences.items.1.subtitle'),
-      role: t('conferences.items.1.role'),
-      organizer: t('conferences.items.1.organizer'),
-      year: '2024'
-    },
-    {
-      id: 3,
-      image: CONF3,
-      title: t('conferences.items.2.title'),
-      subtitle: t('conferences.items.2.subtitle'),
-      role: t('conferences.items.2.role'),
-      organizer: t('conferences.items.2.organizer'),
-      year: '2024'
-    },
-    {
-      id: 4,
-      image: CONF4,
-      title: t('conferences.items.3.title'),
-      subtitle: t('conferences.items.3.subtitle'),
-      role: t('conferences.items.3.role'),
-      organizer: t('conferences.items.3.organizer'),
-      year: '2024'
-    },
-    {
-      id: 5,
-      image: CONF5,
-      title: t('conferences.items.4.title'),
-      subtitle: t('conferences.items.4.subtitle'),
-      role: t('conferences.items.4.role'),
-      organizer: t('conferences.items.4.organizer'),
-      year: '2023'
-    },
-    {
-      id: 6,
-      image: CONF6,
-      title: t('conferences.items.5.title'),
-      subtitle: t('conferences.items.5.subtitle'),
-      role: t('conferences.items.5.role'),
-      organizer: t('conferences.items.5.organizer'),
-      year: '2023'
-    },
-    {
-      id: 7,
-      image: CONF7,
-      title: t('conferences.items.6.title'),
-      subtitle: t('conferences.items.6.subtitle'),
-      role: t('conferences.items.6.role'),
-      organizer: t('conferences.items.6.organizer'),
-      year: '2023'
-    }
+    { id: 1, image: CONF1, title: t('conferences.items.0.title'), subtitle: t('conferences.items.0.subtitle'), role: t('conferences.items.0.role'), organizer: t('conferences.items.0.organizer'), year: '2024' },
+    { id: 2, image: CONF2, title: t('conferences.items.1.title'), subtitle: t('conferences.items.1.subtitle'), role: t('conferences.items.1.role'), organizer: t('conferences.items.1.organizer'), year: '2024' },
+    { id: 3, image: CONF3, title: t('conferences.items.2.title'), subtitle: t('conferences.items.2.subtitle'), role: t('conferences.items.2.role'), organizer: t('conferences.items.2.organizer'), year: '2024' },
+    { id: 4, image: CONF4, title: t('conferences.items.3.title'), subtitle: t('conferences.items.3.subtitle'), role: t('conferences.items.3.role'), organizer: t('conferences.items.3.organizer'), year: '2024' },
+    { id: 5, image: CONF5, title: t('conferences.items.4.title'), subtitle: t('conferences.items.4.subtitle'), role: t('conferences.items.4.role'), organizer: t('conferences.items.4.organizer'), year: '2023' },
+    { id: 6, image: CONF6, title: t('conferences.items.5.title'), subtitle: t('conferences.items.5.subtitle'), role: t('conferences.items.5.role'), organizer: t('conferences.items.5.organizer'), year: '2023' },
+    { id: 7, image: CONF7, title: t('conferences.items.6.title'), subtitle: t('conferences.items.6.subtitle'), role: t('conferences.items.6.role'), organizer: t('conferences.items.6.organizer'), year: '2023' }
   ]
 
-  const handleNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % conferences.length)
-  }, [conferences.length])
-
-  const handlePrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + conferences.length) % conferences.length)
-  }, [conferences.length])
-
-  const handleIndicatorClick = (index) => {
-    setCurrentIndex(index)
-    setIsAutoPlaying(false)
-    setTimeout(() => setIsAutoPlaying(true), 8000)
-  }
+  const handleNext = useCallback(() => setCurrentIndex(p => (p + 1) % conferences.length), [conferences.length])
+  const handlePrev = useCallback(() => setCurrentIndex(p => (p - 1 + conferences.length) % conferences.length), [conferences.length])
 
   const pauseAutoplay = () => {
     setIsAutoPlaying(false)
     setTimeout(() => setIsAutoPlaying(true), 8000)
   }
 
-  // Touch handlers for mobile swipe
-  const handleTouchStart = (e) => {
-    setTouchEnd(null)
-    setTouchStart(e.targetTouches[0].clientX)
-  }
-
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX)
-  }
-
-  const handleTouchEnd = () => {
+  const handleTouchStart = (e) => { setTouchEnd(null); setTouchStart(e.targetTouches[0].clientX) }
+  const handleTouchMove  = (e) => setTouchEnd(e.targetTouches[0].clientX)
+  const handleTouchEnd   = () => {
     if (!touchStart || !touchEnd) return
-    const distance = touchStart - touchEnd
-    const minSwipeDistance = 50
-    if (Math.abs(distance) > minSwipeDistance) {
-      if (distance > 0) {
-        handleNext()
-      } else {
-        handlePrev()
-      }
-      pauseAutoplay()
-    }
+    const dist = touchStart - touchEnd
+    if (Math.abs(dist) > 50) { dist > 0 ? handleNext() : handlePrev(); pauseAutoplay() }
   }
 
-  // Autoplay
   useEffect(() => {
     if (!isAutoPlaying) return
-    const interval = setInterval(handleNext, 4000)
+    const interval = setInterval(handleNext, 4500)
     return () => clearInterval(interval)
   }, [isAutoPlaying, handleNext])
 
@@ -142,11 +58,7 @@ const Conferences = () => {
       <h2>{t('conferences.title')}</h2>
 
       <div className='container conferences__wrapper'>
-        <button
-          className='conferences__btn conferences__btn--prev'
-          onClick={() => { handlePrev(); pauseAutoplay() }}
-          title='Previous'
-        >
+        <button className='conferences__btn' onClick={() => { handlePrev(); pauseAutoplay() }} title='Previous'>
           <MdChevronLeft />
         </button>
 
@@ -162,16 +74,15 @@ const Conferences = () => {
           >
             {conferences.map((conf) => (
               <div key={conf.id} className='conferences__slide'>
-                <div
-                  className='conferences__card'
-                  onClick={() => setSelectedConference(conf)}
-                >
-                  <div className='conferences__image-container'>
-                    <img src={conf.image} alt={conf.title} />
-                    <div className='conferences__year-badge'>
-                      <FaCalendarAlt />
-                      <span>{conf.year}</span>
-                    </div>
+                <div className='conferences__card' onClick={() => setSelectedConference(conf)}>
+                  <img src={conf.image} alt={conf.title} className='conferences__bg-img' />
+                  <div className='conferences__overlay'></div>
+                  <div className='conferences__year-badge'>
+                    <FaCalendarAlt />
+                    <span>{conf.year}</span>
+                  </div>
+                  <div className='conferences__index'>
+                    {String(currentIndex + 1).padStart(2, '0')}&thinsp;/&thinsp;{String(conferences.length).padStart(2, '0')}
                   </div>
                   <div className='conferences__content'>
                     <h3 className='conferences__title'>{conf.title}</h3>
@@ -197,11 +108,7 @@ const Conferences = () => {
           </div>
         </div>
 
-        <button
-          className='conferences__btn conferences__btn--next'
-          onClick={() => { handleNext(); pauseAutoplay() }}
-          title='Next'
-        >
+        <button className='conferences__btn' onClick={() => { handleNext(); pauseAutoplay() }} title='Next'>
           <MdChevronRight />
         </button>
       </div>
@@ -211,7 +118,7 @@ const Conferences = () => {
           <button
             key={index}
             className={`conferences__indicator ${currentIndex === index ? 'active' : ''}`}
-            onClick={() => handleIndicatorClick(index)}
+            onClick={() => { setCurrentIndex(index); pauseAutoplay() }}
             title={`Slide ${index + 1}`}
           />
         ))}
@@ -220,16 +127,11 @@ const Conferences = () => {
       <div className='conferences__progress'>
         <div
           className='conferences__progress-bar'
-          style={{
-            width: `${((currentIndex + 1) / conferences.length) * 100}%`
-          }}
+          style={{ width: `${((currentIndex + 1) / conferences.length) * 100}%` }}
         />
       </div>
 
-      <ConferenceModal
-        conference={selectedConference}
-        onClose={() => setSelectedConference(null)}
-      />
+      <ConferenceModal conference={selectedConference} onClose={() => setSelectedConference(null)} />
     </section>
   )
 }

@@ -3,6 +3,14 @@ import './experience.css'
 import { useTranslation } from 'react-i18next'
 import { useSkeletonLoader } from '../../hooks/useSkeletonLoader'
 import SkeletonLoader from '../common/SkeletonLoader'
+import { FaDesktop, FaServer, FaDatabase, FaTools } from 'react-icons/fa'
+
+const CATEGORY_ICONS = {
+  frontend:  <FaDesktop />,
+  backend:   <FaServer />,
+  databases: <FaDatabase />,
+  tools:     <FaTools />
+}
 
 const Experience = () => {
   const { t } = useTranslation()
@@ -23,7 +31,7 @@ const Experience = () => {
     },
     {
       category: 'tools',
-      skills: ['Git', 'Docker', 'AWS', 'GCP', 'Postman', 'Jira', 'Figma', 'Power BI', 'Looker Studio', 'Driblle', 'Pencil']
+      skills: ['Git', 'Docker', 'AWS', 'GCP', 'Postman', 'Jira', 'Figma', 'Power BI', 'Looker Studio', 'Pencil']
     }
   ]
 
@@ -36,11 +44,10 @@ const Experience = () => {
           [1, 2, 3, 4].map((index) => (
             <div key={index} className='experience__category'>
               <SkeletonLoader variant="title" width="60%" />
-              <div className='experience__tags' style={{marginTop: '1rem'}}>
-                <SkeletonLoader variant="button" width="80px" />
-                <SkeletonLoader variant="button" width="100px" />
-                <SkeletonLoader variant="button" width="90px" />
-                <SkeletonLoader variant="button" width="70px" />
+              <div className='experience__tags' style={{ marginTop: '1rem' }}>
+                {[80, 100, 90, 70].map((w, i) => (
+                  <SkeletonLoader key={i} variant="button" width={`${w}px`} />
+                ))}
               </div>
             </div>
           ))
@@ -48,13 +55,14 @@ const Experience = () => {
           skillsData.map((skillGroup) => (
             <div key={skillGroup.category} className='experience__category'>
               <h3 className='experience__category-title'>
+                <span className='experience__category-icon'>
+                  {CATEGORY_ICONS[skillGroup.category]}
+                </span>
                 {t(`experience.${skillGroup.category}`)}
               </h3>
               <div className='experience__tags'>
                 {skillGroup.skills.map((skill) => (
-                  <span key={skill} className='experience__tag'>
-                    {skill}
-                  </span>
+                  <span key={skill} className='experience__tag'>{skill}</span>
                 ))}
               </div>
             </div>
