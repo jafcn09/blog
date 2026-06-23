@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/blog/static/css/main.14d844fe.css",
-    "main.js": "/blog/static/js/main.7caa8231.js",
+    "main.css": "/blog/static/css/main.652d0e53.css",
+    "main.js": "/blog/static/js/main.e150fe87.js",
     "static/media/seriousgame.jpg": "/blog/static/media/seriousgame.83f41db13f6e1d92f578.jpg",
     "static/media/conf1.jpg": "/blog/static/media/conf1.f6676ef15517fca2702a.jpg",
     "static/media/conf3.jpg": "/blog/static/media/conf3.6686ced64f8c9b7a5a78.jpg",
@@ -24,12 +24,13 @@
     "static/media/conf6.jpg": "/blog/static/media/conf6.cb3f71497b2450787696.jpg",
     "static/media/portafolio6.png": "/blog/static/media/portafolio6.b6347394fc2ff17d9a4c.png",
     "static/media/portafolio5.jpg": "/blog/static/media/portafolio5.7bc0a23321f1feaf970d.jpg",
+    "static/media/peru-spatial.svg": "/blog/static/media/peru-spatial.c492522d835b7a50d875c1630ef7bfbf.svg",
     "index.html": "/blog/index.html",
-    "main.14d844fe.css.map": "/blog/static/css/main.14d844fe.css.map",
-    "main.7caa8231.js.map": "/blog/static/js/main.7caa8231.js.map"
+    "main.652d0e53.css.map": "/blog/static/css/main.652d0e53.css.map",
+    "main.e150fe87.js.map": "/blog/static/js/main.e150fe87.js.map"
   },
   "entrypoints": [
-    "static/css/main.14d844fe.css",
-    "static/js/main.7caa8231.js"
+    "static/css/main.652d0e53.css",
+    "static/js/main.e150fe87.js"
   ]
 }

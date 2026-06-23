@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="100%" style="stop-color:#0d2040"/>
+    </linearGradient>
+    <linearGradient id="peruGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:0.85"/>
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0.65"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="heatmap1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="heatmap2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.40"/>
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="heatmap3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#22d3ee;stop-opacity:0.45"/>
+      <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+
+  <!-- Grid lines — longitude (vertical) -->
+  <g stroke="#1e3a5f" stroke-width="0.6" opacity="0.7">
+    <line x1="90"  y1="0" x2="90"  y2="500"/>
+    <line x1="180" y1="0" x2="180" y2="500"/>
+    <line x1="270" y1="0" x2="270" y2="500"/>
+    <line x1="360" y1="0" x2="360" y2="500"/>
+    <line x1="450" y1="0" x2="450" y2="500"/>
+    <line x1="540" y1="0" x2="540" y2="500"/>
+    <line x1="630" y1="0" x2="630" y2="500"/>
+    <line x1="720" y1="0" x2="720" y2="500"/>
+    <line x1="810" y1="0" x2="810" y2="500"/>
+  </g>
+
+  <!-- Grid lines — latitude (horizontal) -->
+  <g stroke="#1e3a5f" stroke-width="0.6" opacity="0.7">
+    <line x1="0" y1="50"  x2="900" y2="50"/>
+    <line x1="0" y1="100" x2="900" y2="100"/>
+    <line x1="0" y1="150" x2="900" y2="150"/>
+    <line x1="0" y1="200" x2="900" y2="200"/>
+    <line x1="0" y1="250" x2="900" y2="250"/>
+    <line x1="0" y1="300" x2="900" y2="300"/>
+    <line x1="0" y1="350" x2="900" y2="350"/>
+    <line x1="0" y1="400" x2="900" y2="400"/>
+    <line x1="0" y1="450" x2="900" y2="450"/>
+  </g>
+
+  <!-- Heatmap blobs -->
+  <ellipse cx="350" cy="200" rx="130" ry="110" fill="url(#heatmap1)"/>
+  <ellipse cx="560" cy="310" rx="110" ry="90"  fill="url(#heatmap2)"/>
+  <ellipse cx="200" cy="340" rx="100" ry="80"  fill="url(#heatmap3)"/>
+
+  <!-- Peru silhouette (simplified polygon) -->
+  <polygon
+    points="290,50 330,40 380,55 420,45 460,60 490,90 510,130 520,170 515,220 530,260 520,310 490,350 460,380 420,400 380,420 340,410 300,390 270,360 250,320 240,280 245,240 235,200 240,160 250,120 260,85"
+    fill="url(#peruGrad)"
+    stroke="#38bdf8"
+    stroke-width="1.5"
+    opacity="0.9"
+  />
+
+  <!-- Department grid lines inside Peru -->
+  <g stroke="#38bdf8" stroke-width="0.4" opacity="0.3">
+    <line x1="260" y1="120" x2="510" y2="120"/>
+    <line x1="250" y1="200" x2="530" y2="200"/>
+    <line x1="245" y1="280" x2="525" y2="280"/>
+    <line x1="260" y1="360" x2="480" y2="360"/>
+    <line x1="320" y1="50"  x2="320" y2="420"/>
+    <line x1="390" y1="45"  x2="390" y2="425"/>
+    <line x1="460" y1="55"  x2="460" y2="395"/>
+  </g>
+
+  <!-- Capital dot: Lima -->
+  <circle cx="265" cy="295" r="10" fill="url(#dotGlow)" filter="url(#softglow)"/>
+  <circle cx="265" cy="295" r="4"  fill="#38bdf8"/>
+  <circle cx="265" cy="295" r="8"  fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.5">
+    <animate attributeName="r" from="4" to="18" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" from="0.7" to="0" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- City dots scattered -->
+  <circle cx="350" cy="130" r="5" fill="#f97316" filter="url(#glow)"/>
+  <circle cx="420" cy="200" r="4" fill="#22d3ee" filter="url(#glow)"/>
+  <circle cx="380" cy="320" r="5" fill="#a855f7" filter="url(#glow)"/>
+  <circle cx="460" cy="270" r="3" fill="#22d3ee" filter="url(#glow)"/>
+  <circle cx="310" cy="360" r="4" fill="#f97316" filter="url(#glow)"/>
+  <circle cx="290" cy="200" r="3" fill="#a855f7" filter="url(#glow)"/>
+  <circle cx="430" cy="360" r="3" fill="#22d3ee" filter="url(#glow)"/>
+
+  <!-- Connection lines between dots -->
+  <g stroke="#38bdf8" stroke-width="0.8" opacity="0.35" stroke-dasharray="4,4">
+    <line x1="265" y1="295" x2="350" y2="130"/>
+    <line x1="265" y1="295" x2="420" y2="200"/>
+    <line x1="265" y1="295" x2="380" y2="320"/>
+    <line x1="350" y1="130" x2="420" y2="200"/>
+    <line x1="420" y1="200" x2="460" y2="270"/>
+    <line x1="380" y1="320" x2="310" y2="360"/>
+  </g>
+
+  <!-- Longitude/Latitude labels -->
+  <g fill="#38bdf8" font-family="monospace" font-size="10" opacity="0.5">
+    <text x="85"  y="12" text-anchor="middle">75°W</text>
+    <text x="265" y="12" text-anchor="middle">70°W</text>
+    <text x="445" y="12" text-anchor="middle">65°W</text>
+    <text x="4"   y="105" dominant-baseline="middle">10°S</text>
+    <text x="4"   y="255" dominant-baseline="middle">15°S</text>
+    <text x="4"   y="405" dominant-baseline="middle">20°S</text>
+  </g>
+
+  <!-- Scale bar -->
+  <g transform="translate(650, 440)">
+    <line x1="0" y1="0" x2="120" y2="0" stroke="#38bdf8" stroke-width="1.5" opacity="0.7"/>
+    <line x1="0" y1="-5" x2="0"   y2="5" stroke="#38bdf8" stroke-width="1.5" opacity="0.7"/>
+    <line x1="120" y1="-5" x2="120" y2="5" stroke="#38bdf8" stroke-width="1.5" opacity="0.7"/>
+    <line x1="60"  y1="-3" x2="60"  y2="3" stroke="#38bdf8" stroke-width="1"   opacity="0.5"/>
+    <text x="60" y="-10" text-anchor="middle" fill="#38bdf8" font-size="10" font-family="monospace" opacity="0.7">500 km</text>
+  </g>
+
+  <!-- Corner compass rose -->
+  <g transform="translate(810, 80)">
+    <circle cx="0" cy="0" r="28" fill="rgba(10,22,40,0.7)" stroke="#1e3a5f" stroke-width="1"/>
+    <polygon points="0,-22 4,-6 -4,-6"     fill="#38bdf8" opacity="0.9"/>
+    <polygon points="0,22  4,6  -4,6"      fill="#334155" opacity="0.7"/>
+    <polygon points="-22,0 -6,-4 -6,4"    fill="#334155" opacity="0.7"/>
+    <polygon points="22,0   6,-4  6,4"    fill="#334155" opacity="0.7"/>
+    <text x="0" y="-26" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="bold" font-family="monospace">N</text>
+  </g>
+
+  <!-- Coordinate display panel -->
+  <g transform="translate(630, 20)">
+    <rect width="240" height="62" rx="6" fill="rgba(10,22,40,0.82)" stroke="#1e3a5f" stroke-width="1"/>
+    <text x="12" y="18" fill="#64748b" font-size="9"  font-family="monospace">COORDINATES</text>
+    <text x="12" y="35" fill="#38bdf8" font-size="11" font-family="monospace">LAT: -12.0464° S</text>
+    <text x="12" y="52" fill="#38bdf8" font-size="11" font-family="monospace">LNG: -77.0428° W</text>
+  </g>
+
+  <!-- Data layer label -->
+  <g transform="translate(630, 95)">
+    <rect width="240" height="80" rx="6" fill="rgba(10,22,40,0.82)" stroke="#1e3a5f" stroke-width="1"/>
+    <text x="12" y="18" fill="#64748b" font-size="9"  font-family="monospace">ACTIVE LAYERS</text>
+    <g>
+      <circle cx="20" cy="35" r="4" fill="#f97316"/>
+      <text x="30" y="39" fill="#cbd5e1" font-size="10" font-family="monospace">Poblacional</text>
+    </g>
+    <g>
+      <circle cx="20" cy="52" r="4" fill="#a855f7"/>
+      <text x="30" y="56" fill="#cbd5e1" font-size="10" font-family="monospace">Vial</text>
+    </g>
+    <g>
+      <circle cx="20" cy="69" r="4" fill="#22d3ee"/>
+      <text x="30" y="73" fill="#cbd5e1" font-size="10" font-family="monospace">Hidrografía</text>
+    </g>
+  </g>
+
+  <!-- Title -->
+  <text x="445" y="478" text-anchor="middle" fill="#1e3a5f" font-size="11" font-family="monospace" opacity="0.6">PERU SPATIAL UTILS — HERRAMIENTAS GEOESPACIALES</text>
+</svg>
